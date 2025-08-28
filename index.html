@@ -16,9 +16,12 @@
         <button id="language-toggle" class="theme-btn" onclick="setLanguage(document.documentElement.lang === 'es' ? 'en' : 'es')" title="English" data-lang="en">
             EN
         </button>
-        <button class="theme-btn" data-theme="default" title="Tema Azul"><i class="fas fa-palette"></i></button>
-        <button class="theme-btn" data-theme="dark" title="Tema Oscuro"><i class="fas fa-moon"></i></button>
+        <button class="theme-btn" data-theme="default" title="Tema Claro"><i class="fas fa-sun"></i></button>
+        <button class="theme-btn" data-theme="blue" title="Tema Azul"><i class="fas fa-droplet"></i></button>
         <button class="theme-btn" data-theme="green" title="Tema Verde"><i class="fas fa-leaf"></i></button>
+        <button class="theme-btn" data-theme="red" title="Tema Rojo"><i class="fas fa-fire"></i></button>
+        <button class="theme-btn" data-theme="dark" title="Tema Oscuro"><i class="fas fa-moon"></i></button>
+        
         <button id="toggleBorders" class="theme-btn" title="Alternar bordes"><i class="fas fa-border-all"></i></button>
     </div>
     
@@ -27,8 +30,8 @@
         <div class="container">
             <div class="hero-header">
                 <div class="hero-text">
-                    <h1 data-i18n="hero.title">Juan Sebastian Gallardo Baena</h1>
-                    <h2 data-i18n="hero.subtitle">Desarrollador web junior — construyo apps que solucionan problemas y mejoran tu estilo de vida.</h2>
+                    <h1 data-i18n="hero.title"></h1>
+                    <h2 data-i18n="hero.subtitle"></h2>
                 </div>
 
             </div>
@@ -71,11 +74,11 @@
                             <span>Grupo</span>
                         </div>
                         <div class="project-impact">
-                            <span>Proyecto finalista de la hackathon del 2025, aplicacion web potenciada por IA para coleccionistas de distintos nichos. Los usuarios pueden cargar fotografias de sus colecciones, y con la ayuda de la IA, se analizan y se valorizan, ademas se pueden compartir con otros usuarios. Para crear una comunidad de personas con gustos en comun.</span>
+                            <span data-i18n="triasure.description"></span>
                         </div>
                         <div class="project-links">
-                            <a href="https://triasure-ai.vercel.app/" target="_blank" class="btn btn-outline">
-                                <i class="fas fa-external-link-alt"></i> Despliegue
+                            <a href="https://stockup-theta.vercel.app/" target="_blank" class="btn-outline2">
+                                <i class="fas fa-external-link-alt"></i> <span data-i18n="projects.deployment">Despliegue</span>
                             </a>
                             <!-- <a href="https://agenda.tunombre.dev" target="_blank" class="btn-outline2">
                                 <i class="fas fa-rocket"></i>Analiticas
@@ -96,13 +99,13 @@
                             <span>Personal</span>   
                         </div>
                         <div class="project-impact">
-                            <span>StockUp es una aplicacion web, personal, desarrollada para gestionar el inventario de tus listas de compras. Potenciado con inteligencia artificial para el analisis de recibos de compra, ademas una facil gestion de los productos y recordatorios de caducidad. Al igual que las compras, las listas de compras pueden ser compartidas con otros usuarios.</span>
+                            <span data-i18n="stockup.description"></span>
                         </div>
                         <div class="project-links">
                             <a href="#" class="btn btn-outline private-repo">
                                 <i class="fab fa-github"></i>
                                 <span data-i18n="projects.repository">Repositorio</span>
-                                <span class="private-badge">Privado</span>
+                                <!-- <span class="private-badge">Privado</span> -->
                             </a>
                             <a href="https://stockup-theta.vercel.app/" target="_blank" class="btn-outline2">
                                 <i class="fas fa-external-link-alt"></i> <span data-i18n="projects.deployment">Despliegue</span>
@@ -121,14 +124,14 @@
                             <span>Grupo</span>
                         </div>
                         <div class="project-impact">
-                            <span>Mantix es una aplicacion web, desarrollada en grupo, para una empresa de mantenimiento. Mantix ofrece el servicio de organizar, programar, notificar y cargar la informacion a una database. Los formularios para los mantenimientos de los respectivos assets elaborados bajo peticion del cliente, con carga de fotografias del antes y despues del mantenimiento.</span>
+                            <span data-i18n="mantix.description"></span>
                         </div>
                         <div class="project-links">
                             <!-- <a href="https://github.com/usuario/agenda" target="_blank" class="btn btn-outline">
                                 <i class="fab fa-github"></i> Repositorio
                             </a> -->
-                            <a href="https://mantix.vercel.app/protected" target="_blank" class="btn-outline2">
-                                <i class="fas fa-external-link-alt"></i> Despliegue
+                            <a href="https://stockup-theta.vercel.app/" target="_blank" class="btn-outline2">
+                                <i class="fas fa-external-link-alt"></i> <span data-i18n="projects.deployment"></span>
                             </a>
                         </div>
                     </div>
@@ -143,7 +146,7 @@
                             <span>Gemini IA</span>
                         </div>
                         <div class="project-impact">
-                            <span>Proyecto final de mi curso de Python. Como profesor tenia el problema de calificar demasiados examenes, por lo que se desarrollo un autograder IA que a traves de la IA de gemini, analiza la fotografia de un examen la compara con las respuestas correctas, calificando al estudiante ademas de brindar un feedback sobre su rendimiento.</span>
+                            <span data-i18n="autograder.description"></span>
                         </div>
                         <div class="project-links">
                             <!-- <a href="https://github.com/usuario/agenda" target="_blank" class="btn btn-outline">
@@ -166,14 +169,14 @@
                             <span>Grupo</span>
                         </div>
                         <div class="project-impact">
-                            <span>Proyecto final del curso de desarrollo web. TrainIA es una aplicacion web potenciada por IA para ayudar a entrenar y llevar un control de su rendimiento a los runners. La IA de gemini genere los entrenamiento teniendo en cuenta caracteristicas personales de los usuarios, tiene en cuenta su rendimiento para generar los proximos entrenamientos y ayudarlo a alcanzar sus objetivos.</span>
+                            <span data-i18n="trainia.description"></span>
                         </div>
                         <div class="project-links">
                             <a href="https://github.com/usuario/agenda" target="_blank" class="btn btn-outline">
-                                <i class="fab fa-github"></i> Repositorio
+                                <i class="fab fa-github"></i> <span data-i18n="projects.repository"></span> 
                             </a>
-                            <a href="https://agenda.tunombre.dev" target="_blank" class="btn-outline2">
-                                <i class="fas fa-external-link-alt"></i> Despliegue
+                            <a href="https://stockup-theta.vercel.app/" target="_blank" class="btn-outline2">
+                                <i class="fas fa-external-link-alt"></i> <span data-i18n="projects.deployment"></span>
                             </a>
                         </div>
                     </div>
@@ -188,14 +191,14 @@
                             <span>Gemini IA</span>
                         </div>
                         <div class="project-impact">
-                            <span>Proyecto en clase del curso de desarrollo web. Una interfaz para chatear entre usuarios, ademas de acceso a perfiles. Puedes crear usuarios, ademas de una IA con la que si puedes chatear.</span>
+                            <span data-i18n="chatbot.description"></span>
                         </div>
                         <div class="project-links">
                             <a href="" target="_blank" class="btn btn-outline">
-                                <i class="fab fa-github"></i> Repositorio
+                                <i class="fab fa-github"></i> <span data-i18n="projects.repository"></span> 
                             </a>
-                            <a href="" target="_blank" class="btn-outline2">
-                                <i class="fas fa-external-link-alt"></i> Despliegue
+                            <a href="https://stockup-theta.vercel.app/" target="_blank" class="btn-outline2">
+                                <i class="fas fa-external-link-alt"></i> <span data-i18n="projects.deployment"></span>
                             </a>
                         </div>
                     </div>
@@ -209,14 +212,14 @@
                             <span>Personal</span>
                         </div>
                         <div class="project-impact">
-                            <span>Juego de punto y fama. Desarrollado en python. Consiste en conseguir adivinar el numero de 4 cifras que genera la maquina automaticamente.a traves de pistas que son puntos y famas.</span>
+                            <span data-i18n="puntoyfama.description"></span>
                         </div>
                         <div class="project-links">
-                            <a href="" target="_blank" class="btn btn-outline3">
-                                <i class="fab fa-github"></i> Repositorio
+                            <a href="" target="_blank" class="btn btn-outline">
+                                <i class="fab fa-github"></i> <span data-i18n="projects.repository"></span> 
                             </a>
                             <a href="" target="_blank" class="btn-outline2">
-                                <i class="fas fa-external-link-alt"></i> Despliegue
+                                <i class="fas fa-external-link-alt"></i> <span data-i18n="projects.deployment"></span>
                             </a>
                         </div>
                     </div>
@@ -230,14 +233,14 @@
                             <span>Personal</span>
                         </div>
                         <div class="project-impact">
-                            <span>Proyecto en clase del curso de desarrollo web. Una version compleja del clasico juego del ahorcado, con usa estetica futurista, con la posibilidad de jugar contra la maquina o contra un amigo.</span>
+                            <span data-i18n="ahorcadosigloxxx1.description"></span>
                         </div>
                         <div class="project-links">
                             <a href="" target="_blank" class="btn btn-outline">
-                                <i class="fab fa-github"></i> Repositorio
+                                <i class="fab fa-github"></i> <span data-i18n="projects.repository"></span> 
                             </a>
                             <a href="" target="_blank" class="btn-outline2">
-                                <i class="fas fa-external-link-alt"></i> Despliegue
+                                <i class="fas fa-external-link-alt"></i> <span data-i18n="projects.deployment"></span>
                             </a>
                         </div>
                     </div>
@@ -292,13 +295,13 @@
                     </a>
                     <a href="https://wa.me/573177364765" class="contact-link">
                         <i class="fab fa-whatsapp"></i>
-                        <span>+57 3177364765</span>
+                        <span>whatsapp</span>
                     </a>
                     <a href="https://www.linkedin.com/in/juan-sebastian-gallardo-baena/" class="contact-link" target="_blank">
                         <i class="fab fa-linkedin"></i>
-                        <span>Juan Sebastian Gallardo Baena</span>
+                        <span>linkedin</span>
                     </a>
-                    <a href="https://github.com/usuario" class="contact-link" target="_blank">
+                    <a href="https://github.com/Jsgallardo82" class="contact-link" target="_blank">
                         <i class="fab fa-github"></i>
                         <span>GitHub</span>
                     </a>
