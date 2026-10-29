@@ -3,11 +3,33 @@ const translations = {
     es: {
         // Hero Section
         'hero.title': 'Juan Sebastian Gallardo Baena',
-        'hero.subtitle': 'Desarrollador web junior — construyo apps que solucionan problemas y mejoran tu estilo de vida.',
+        'hero.subtitle': 'Desarrollador web — construyo apps que solucionan problemas y mejoran tu estilo de vida.',
+        'hero.meta': 'Barranquilla, Colombia · Abierto a tiempo completo, freelance, remoto o presencial.',
         'hero.skills.react': 'React/Node.js',
         'hero.skills.fullstack': 'Full Stack',
         'hero.skills.python': 'Python',
         'hero.skills.ai': 'IA developer',
+        'hero.skills.data': 'Datos',
+        'hero.skills.database': 'Bases de datos',
+        'hero.skills.viz': 'Visualización',
+        'stack.languages': 'Lenguajes',
+        'stack.frameworks': 'Frameworks',
+        'stack.data': 'Datos',
+        'stack.ai': 'IA',
+        'stack.cloud': 'Nube',
+        'stack.tools': 'Herramientas',
+        'stack.docs': 'Documentos',
+        'stack.title': 'Stack',
+        'about.title': 'Sobre mí',
+        'about.description': 'Soy desarrollador web y me gusta armar soluciones digitales que de verdad se usen. Trabajo sobre todo el frontend, con la IA metida en el proceso, buenas prácticas y una solución clara.',
+        'about.personal.title': 'Fuera del código',
+        'about.personal.description': 'Me gusta el anime y los videojuegos, las películas y las series divertidas, y el deporte: basketball y el gimnasio. Como físico también miro la realidad con objetividad, y me mueve mejorarla para nosotros y para las generaciones que vienen.',
+        'about.personal.stack.title': 'Cómo trabajo',
+        'about.personal.stack.team': 'Trabajar en equipo',
+        'about.personal.stack.learn': 'Aprender rápido',
+        'about.personal.stack.solve': 'Resolver problemas',
+        'about.personal.stack.innovate': 'Llevar una idea hasta una solución que se use',
+        'about.stack.title': 'Stack',
         
         // Projects Section
         'projects.title': 'Proyectos Destacados',
@@ -15,9 +37,16 @@ const translations = {
         'projects.repository': 'Repositorio',
         'projects.deployment': 'Despliegue',
 
-        //triasure
-        'triasure.title': 'Triasure',
-        'triasure.description': 'Proyecto finalista de la hackathon del 2025, aplicacion web potenciada por IA para coleccionistas de distintos nichos. Los usuarios pueden cargar fotografias de sus colecciones, y con la ayuda de la IA, se analizan y se valorizan, ademas se pueden compartir con otros usuarios. Para crear una comunidad de personas con gustos en comun.',
+        'fitnessgym.description': 'Proyecto final del máster en Big Data para un gimnasio familiar. Limpié y ordené 86.093 asistencias de 2021 a 2026, entrené un modelo de deserción con scikit-learn y dejé la lista de riesgo a la vista del administrador en Total-App.',
+        'sharkcaribe.description': 'Aplicación de la Shark Caribe Pitch Competition 2026. Cubre el registro, el pago con Wompi, el envío de boletas por correo con Resend y la gestión de entradas físicas. El frente está en React y Vite; los datos, la autenticación y las funciones de servidor viven en Supabase.',
+        'zitterbewegung.description': 'Simulador científico y educativo del efecto Zitterbewegung, la vibración que predice la ecuación de Dirac para un electrón libre. Next.js muestra el dashboard, la vista de la partícula y el mar de Dirac. FastAPI, QuTiP y SciPy calculan la evolución del sistema.',
+        'ciced.description': 'Sitio del I Congreso Internacional de Ciencias y Educación, de la Institución Universitaria de Barranquilla. Incluye las páginas del evento, la convocatoria de trabajos con su evaluación y la inscripción a la Olimpiada Padilla Benavidez. Está hecho con Astro, React y Supabase.',
+        'totalapp.description': 'Entrenador personal con IA para usar en el celular, dentro del gimnasio. La persona arma su perfil, recibe la rutina del día y la sigue en un chat con cronómetro, series y marcas. Es una PWA en React, Vite y Supabase.',
+        'labreport.description': 'Herramienta para docentes. Suben un informe de laboratorio en PDF o Word y la IA lo compara con la plantilla del curso o revisa las respuestas de una guía. Hay roles de administrador y de docente, y los informes quedan guardados para filtrarlos. TanStack Start, Supabase y Gemini.',
+        'frogboard.description': 'Tablero para organizar las tareas de un hogar. Cada familia comparte tablillas, ve el estado de los demás al momento y reparte misiones. Hecho con React, Vite y Supabase.',
+        'lissajous.description': 'Visualizador de curvas de Lissajous. Se mueven las frecuencias, el desfase y las amplitudes, hay figuras listas y la imagen se puede guardar en PNG. Se abre directo en el navegador.',
+        'modular.description': 'Visualizador de la circunferencia de multiplicación modular. Pone puntos sobre un círculo y los une según el producto modular: salen cardioides, nefroides y mandalas. El multiplicador se puede animar y la figura se exporta a PNG.',
+        'bauly.description': 'Bauly fue finalista de la hackathon de 2025. Es una aplicación para coleccionistas: con una foto, la IA completa la ficha de la pieza. También se puede organizar la colección y compartirla con otras personas.',
         
         //stockup
         'stockup.title': 'Stockup',
@@ -54,7 +83,7 @@ const translations = {
 
         // Footer
         'footer.contact': 'Si te gustó lo visto y quieres contactarme:',
-        'footer.copyright': '© 2025 Sebastian Gallardo. Todos los derechos reservados.',
+        'footer.copyright': '© 2026 Sebastian Gallardo. Todos los derechos reservados.',
         
         // Botones
         'button.toggleBorders': 'Alternar bordes',
@@ -66,11 +95,33 @@ const translations = {
     en: {
         // Hero Section
         'hero.title': 'Juan Sebastian Gallardo Baena',
-        'hero.subtitle': 'Junior Web Developer — I build apps that solve problems and improve your lifestyle.',
+        'hero.subtitle': 'Web Developer — I build apps that solve problems and improve your lifestyle.',
+        'hero.meta': 'Barranquilla, Colombia · Open to full-time, freelance, remote, or on-site work.',
         'hero.skills.react': 'React/Node.js',
         'hero.skills.fullstack': 'Full Stack',
         'hero.skills.python': 'Python',
         'hero.skills.ai': 'AI Developer',
+        'hero.skills.data': 'Data',
+        'hero.skills.database': 'Databases',
+        'hero.skills.viz': 'Visualization',
+        'stack.languages': 'Languages',
+        'stack.frameworks': 'Frameworks',
+        'stack.data': 'Data',
+        'stack.ai': 'AI',
+        'stack.cloud': 'Cloud',
+        'stack.tools': 'Tools',
+        'stack.docs': 'Documents',
+        'stack.title': 'Tech stack',
+        'about.title': 'About me',
+        'about.description': 'I am a web developer, and I like building digital products people actually use. I focus on the frontend, bring AI into the work when it helps, and care about sound practice and a clear solution.',
+        'about.personal.title': 'Off the clock',
+        'about.personal.description': 'I like anime and video games, funny movies and series, and sport: basketball and the gym. I trained as a physicist, so I look at the world with a straight eye, and I want to leave it better for us and for the people who come next.',
+        'about.personal.stack.title': 'How I work',
+        'about.personal.stack.team': 'I work well with a team',
+        'about.personal.stack.learn': 'I learn quickly',
+        'about.personal.stack.solve': 'I like hard problems',
+        'about.personal.stack.innovate': 'I carry an idea through until people can use it',
+        'about.stack.title': 'Tech stack',
         
         // Projects Section
         'projects.title': 'Featured Projects',
@@ -78,9 +129,16 @@ const translations = {
         'projects.repository': 'Repository',
         'projects.deployment': 'Deployment',
 
-        //triasure
-        'triasure.title': 'Triasure',
-        'triasure.description': 'Finalist project of the 2025 Hackathon, a web application powered by AI for collectors across different niches. Users can upload photos of their collections, which are then analyzed and appraised with the help of AI. Collections can also be shared with other users, fostering a community of people with common interests.',
+        'fitnessgym.description': 'Final project of my Big Data master\'s degree for a family gym. I cleaned and organized 86,093 attendance records from 2021 to 2026, trained a churn model with scikit-learn, and put the risk list in front of the manager inside Total-App.',
+        'sharkcaribe.description': 'Application for the Shark Caribe Pitch Competition 2026. It handles registration, Wompi payments, ticket emails through Resend, and physical ticket management. The front end is React and Vite; data, auth, and server functions run on Supabase.',
+        'zitterbewegung.description': 'Scientific and educational simulator of the Zitterbewegung effect, the trembling motion predicted by the Dirac equation for a free electron. Next.js renders the dashboard, the particle view, and the Dirac sea. FastAPI, QuTiP, and SciPy compute how the system evolves.',
+        'ciced.description': 'Site for the First International Congress on Science and Education at the Institución Universitaria de Barranquilla. It includes the event pages, the paper call with its review flow, and registration for the Padilla Benavidez Olympiad. Built with Astro, React, and Supabase.',
+        'totalapp.description': 'AI personal trainer meant for a phone at the gym. You set up a profile, get the day’s workout, and follow it in a chat with a timer, sets, and personal records. It is a PWA built with React, Vite, and Supabase.',
+        'labreport.description': 'A tool for teachers. They upload a lab report as PDF or Word, and the AI checks it against the course template or reviews the answers to a question guide. Admin and teacher roles are separate, and saved reports can be filtered. TanStack Start, Supabase, and Gemini.',
+        'frogboard.description': 'A board for organizing household tasks. Each family shares tablets, sees everyone else’s status as it changes, and assigns missions. Built with React, Vite, and Supabase.',
+        'lissajous.description': 'A Lissajous curve visualizer. You change the frequencies, phase, and amplitudes, pick ready-made figures, and save the image as a PNG. It opens straight in the browser.',
+        'modular.description': 'A modular multiplication circle visualizer. It places points on a circle and joins them by modular product, drawing cardioids, nephroids, and mandalas. The multiplier can be animated and the figure exported as a PNG.',
+        'bauly.description': 'Bauly was a finalist in the 2025 hackathon. It is an app for collectors: from one photo, AI fills in the item card. Collections can also be organized and shared with other people.',
 
         //stockup
         'stockup.title': 'Stockup',
@@ -117,7 +175,7 @@ const translations = {
         
         // Footer
         'footer.contact': 'If you liked what you saw and want to contact me:',
-        'footer.copyright': '© 2025 Sebastian Gallardo. All rights reserved.',
+        'footer.copyright': '© 2026 Sebastian Gallardo. All rights reserved.',
         
         // Buttons
         'button.toggleBorders': 'Toggle borders',

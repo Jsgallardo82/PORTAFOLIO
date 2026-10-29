@@ -3,8 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portafolio de Desarrollador Web - Proyectos y experiencia en desarrollo web">
-    <title>Mi Portafolio | Desarrollador Web</title>
+    <meta name="description" content="Juan Sebastian Gallardo, desarrollador web en Barranquilla. Apps, datos e inteligencia artificial.">
+    <meta property="og:title" content="Juan Sebastian Gallardo | Desarrollador Web">
+    <meta property="og:description" content="Desarrollador web en Barranquilla. Construyo apps que solucionan problemas, con datos e inteligencia artificial.">
+    <meta property="og:image" content="https://jsgallardo82.github.io/PORTAFOLIO/og.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://jsgallardo82.github.io/PORTAFOLIO/">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_CO">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Juan Sebastian Gallardo | Desarrollador Web">
+    <meta name="twitter:description" content="Desarrollador web en Barranquilla. Construyo apps que solucionan problemas, con datos e inteligencia artificial.">
+    <meta name="twitter:image" content="https://jsgallardo82.github.io/PORTAFOLIO/og.jpg">
+    <title>Juan Sebastian Gallardo | Desarrollador Web</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="translations.js" defer></script>
@@ -29,30 +43,46 @@
     <section id="inicio" class="hero">
         <div class="container">
             <div class="hero-header">
+                <div class="hero-logo">
+                    <img src="perfil.jpg" alt="Juan Sebastian Gallardo Baena" width="168" height="168">
+                </div>
                 <div class="hero-text">
                     <h1 data-i18n="hero.title"></h1>
                     <h2 data-i18n="hero.subtitle"></h2>
+                    <p class="hero-meta" data-i18n="hero.meta"></p>
                 </div>
 
             </div>
             
-            <div class="trust-signals">
-                <div class="signal">
-                    <i class="fab fa-react"></i>
+            <div class="trust-signals" role="group" aria-label="Filtrar proyectos por habilidad">
+                <button type="button" class="signal" data-skill="react" aria-pressed="false">
+                    <i class="fab fa-react" aria-hidden="true"></i>
                     <span data-i18n="hero.skills.react">React/Node.js</span>
-                </div>
-                <div class="signal">
-                    <i class="fas fa-layer-group"></i>
+                </button>
+                <button type="button" class="signal" data-skill="fullstack" aria-pressed="false">
+                    <i class="fas fa-layer-group" aria-hidden="true"></i>
                     <span data-i18n="hero.skills.fullstack">Full Stack</span>
-                </div>
-                <div class="signal">
-                    <i class="fab fa-python"></i>
+                </button>
+                <button type="button" class="signal" data-skill="python" aria-pressed="false">
+                    <i class="fab fa-python" aria-hidden="true"></i>
                     <span data-i18n="hero.skills.python">Python</span>
-                </div>
-                <div class="signal">
-                    <i class="fas fa-brain"></i>
+                </button>
+                <button type="button" class="signal" data-skill="ai" aria-pressed="false">
+                    <i class="fas fa-brain" aria-hidden="true"></i>
                     <span data-i18n="hero.skills.ai">IA developer</span>
-                </div>
+                </button>
+                <button type="button" class="signal" data-skill="data" aria-pressed="false">
+                    <i class="fas fa-chart-column" aria-hidden="true"></i>
+                    <span data-i18n="hero.skills.data">Datos</span>
+                </button>
+                <button type="button" class="signal" data-skill="database" aria-pressed="false">
+                    <i class="fas fa-database" aria-hidden="true"></i>
+                    <span data-i18n="hero.skills.database">Bases de datos</span>
+                </button>
+                <button type="button" class="signal" data-skill="viz" aria-pressed="false">
+                    <i class="fas fa-wave-square" aria-hidden="true"></i>
+                    <span data-i18n="hero.skills.viz">Visualización</span>
+                </button>
             </div>
         </div>
     </section>
@@ -62,22 +92,164 @@
         <div class="card-container">
             <h2 data-i18n="projects.title">Proyectos Destacados</h2>
             <div class="projects-grid">
-                <!-- Proyecto 1 -->
-                <article class="project-card">
+                <article class="project-card" data-skills="python,data,ai">
                     <div class="project-content">
-                        <h3>Triasure</h3>
+                        <h3>Fitness Total Gym</h3>
                         <div class="project-tags">
-                            <span>Next.js</span>
-                            <span>Supabase</span>
-                            <span>Gemini IA</span>
-                            <span>Responsive</span>
-                            <span>Grupo</span>
+                            <span class="tech" data-tech="python">Python</span>
+                            <span class="tech" data-tech="pandas">Pandas</span>
+                            <span class="tech" data-tech="sklearn">scikit-learn</span>
+                            <span class="tech" data-tech="numpy">NumPy</span>
                         </div>
                         <div class="project-impact">
-                            <span data-i18n="triasure.description"></span>
+                            <span data-i18n="fitnessgym.description"></span>
                         </div>
                         <div class="project-links">
-                            <a href="https://stockup-theta.vercel.app/" target="_blank" class="btn-outline2">
+                            <span class="private-repo">
+                                <button type="button" class="btn btn-outline" disabled>
+                                    <i class="fab fa-github"></i>
+                                    <span data-i18n="projects.repository">Repositorio</span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </article>
+                <article class="project-card" data-skills="react,fullstack,database">
+                    <div class="project-content">
+                        <h3>Shark Caribe</h3>
+                        <div class="project-tags">
+                            <span class="tech" data-tech="react">React</span>
+                            <span class="tech" data-tech="vite">Vite</span>
+                            <span class="tech" data-tech="supabase">Supabase</span>
+                            <span class="tech" data-tech="vercel">Vercel</span>
+                            <span class="tech" data-tech="pdf">PDF</span>
+                            <span class="tech" data-tech="excel">Excel</span>
+                        </div>
+                        <div class="project-impact">
+                            <span data-i18n="sharkcaribe.description"></span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Jsgallardo82/SharkCaribeHome" target="_blank" class="btn btn-outline">
+                                <i class="fab fa-github"></i>
+                                <span data-i18n="projects.repository">Repositorio</span>
+                            </a>
+                            <a href="https://www.sharkcaribe.co/" target="_blank" class="btn-outline2">
+                                <i class="fas fa-external-link-alt"></i> <span data-i18n="projects.deployment">Despliegue</span>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+                <article class="project-card" data-skills="python,react,fullstack,viz">
+                    <div class="project-content">
+                        <h3>Zitterbewegung</h3>
+                        <div class="project-tags">
+                            <span class="tech" data-tech="nextjs">Next.js</span>
+                            <span class="tech" data-tech="fastapi">FastAPI</span>
+                            <span class="tech" data-tech="python">Python</span>
+                            <span class="tech" data-tech="numpy">NumPy</span>
+                        </div>
+                        <div class="project-impact">
+                            <span data-i18n="zitterbewegung.description"></span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Jsgallardo82/proyecto-py-js" target="_blank" class="btn btn-outline">
+                                <i class="fab fa-github"></i>
+                                <span data-i18n="projects.repository">Repositorio</span>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+                <article class="project-card" data-skills="react,fullstack,database">
+                    <div class="project-content">
+                        <h3>CICED 2026</h3>
+                        <div class="project-tags">
+                            <span class="tech" data-tech="astro">Astro</span>
+                            <span class="tech" data-tech="react">React</span>
+                            <span class="tech" data-tech="supabase">Supabase</span>
+                            <span class="tech" data-tech="tailwind">Tailwind CSS</span>
+                        </div>
+                        <div class="project-impact">
+                            <span data-i18n="ciced.description"></span>
+                        </div>
+                        <div class="project-links">
+                            <span class="private-repo">
+                                <button type="button" class="btn btn-outline" disabled>
+                                    <i class="fab fa-github"></i>
+                                    <span data-i18n="projects.repository">Repositorio</span>
+                                </button>
+                            </span>
+                            <a href="https://cicbed.vercel.app/" target="_blank" class="btn-outline2">
+                                <i class="fas fa-external-link-alt"></i> <span data-i18n="projects.deployment">Despliegue</span>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+                <article class="project-card" data-skills="react,fullstack,database,ai">
+                    <div class="project-content">
+                        <h3>Total-App</h3>
+                        <div class="project-tags">
+                            <span class="tech" data-tech="react">React</span>
+                            <span class="tech" data-tech="vite">Vite</span>
+                            <span class="tech" data-tech="supabase">Supabase</span>
+                            <span class="tech" data-tech="typescript">TypeScript</span>
+                            <span class="tech" data-tech="gemini">Gemini</span>
+                        </div>
+                        <div class="project-impact">
+                            <span data-i18n="totalapp.description"></span>
+                        </div>
+                        <div class="project-links">
+                            <span class="private-repo">
+                                <button type="button" class="btn btn-outline" disabled>
+                                    <i class="fab fa-github"></i>
+                                    <span data-i18n="projects.repository">Repositorio</span>
+                                </button>
+                            </span>
+                            <a href="https://totalcoach.vercel.app/" target="_blank" class="btn-outline2">
+                                <i class="fas fa-external-link-alt"></i> <span data-i18n="projects.deployment">Despliegue</span>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+                <article class="project-card" data-skills="react,fullstack,database,ai">
+                    <div class="project-content">
+                        <h3>Lab Report Navigator</h3>
+                        <div class="project-tags">
+                            <span class="tech" data-tech="react">React</span>
+                            <span class="tech" data-tech="typescript">TypeScript</span>
+                            <span class="tech" data-tech="supabase">Supabase</span>
+                            <span class="tech" data-tech="gemini">Gemini</span>
+                            <span class="tech" data-tech="pdf">PDF</span>
+                        </div>
+                        <div class="project-impact">
+                            <span data-i18n="labreport.description"></span>
+                        </div>
+                        <div class="project-links">
+                            <span class="private-repo">
+                                <button type="button" class="btn btn-outline" disabled>
+                                    <i class="fab fa-github"></i>
+                                    <span data-i18n="projects.repository">Repositorio</span>
+                                </button>
+                            </span>
+                            <a href="https://lab-report-navigator.vercel.app/" target="_blank" class="btn-outline2">
+                                <i class="fas fa-external-link-alt"></i> <span data-i18n="projects.deployment">Despliegue</span>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+                <article class="project-card" data-skills="react,fullstack,database,ai">
+                    <div class="project-content">
+                        <h3>Bauly</h3>
+                        <div class="project-tags">
+                            <span class="tech" data-tech="nextjs">Next.js</span>
+                            <span class="tech" data-tech="supabase">Supabase</span>
+                            <span class="tech" data-tech="gemini">Gemini</span>
+                            <span class="tech" data-tech="typescript">TypeScript</span>
+                        </div>
+                        <div class="project-impact">
+                            <span data-i18n="bauly.description"></span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://bauly.co/" target="_blank" class="btn-outline2">
                                 <i class="fas fa-external-link-alt"></i> <span data-i18n="projects.deployment">Despliegue</span>
                             </a>
                             <!-- <a href="https://agenda.tunombre.dev" target="_blank" class="btn-outline2">
@@ -88,25 +260,24 @@
                 </article>
 
                 <!-- Plantilla para más proyectos -->
-                <article class="project-card">
+                <article class="project-card" data-skills="react,fullstack,database,ai">
                     <div class="project-content">
                         <h3>Stock up</h3>
                         <div class="project-tags">
-                            <span>Next.js</span>
-                            <span>Firebase</span>
-                            <span>Gemini IA</span>
-                            <span>Responsive</span>
-                            <span>Personal</span>   
+                            <span class="tech" data-tech="nextjs">Next.js</span>
+                            <span class="tech" data-tech="firebase">Firebase</span>
+                            <span class="tech" data-tech="gemini">Gemini</span>
                         </div>
                         <div class="project-impact">
                             <span data-i18n="stockup.description"></span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="btn btn-outline private-repo">
-                                <i class="fab fa-github"></i>
-                                <span data-i18n="projects.repository">Repositorio</span>
-                                <!-- <span class="private-badge">Privado</span> -->
-                            </a>
+                            <span class="private-repo">
+                                <button type="button" class="btn btn-outline" disabled>
+                                    <i class="fab fa-github"></i>
+                                    <span data-i18n="projects.repository">Repositorio</span>
+                                </button>
+                            </span>
                             <a href="https://stockup-theta.vercel.app/" target="_blank" class="btn-outline2">
                                 <i class="fas fa-external-link-alt"></i> <span data-i18n="projects.deployment">Despliegue</span>
                             </a>
@@ -114,132 +285,145 @@
                     </div>
                 </article>
                 <!-- Plantilla para más proyectos -->
-                <article class="project-card">
+                <article class="project-card" data-skills="react,fullstack,database">
                     <div class="project-content">
                         <h3>Mantix</h3>
                         <div class="project-tags">
-                            <span>Next.js</span>
-                            <span>Supabase</span>
-                            <span>Responsive</span>
-                            <span>Grupo</span>
+                            <span class="tech" data-tech="nextjs">Next.js</span>
+                            <span class="tech" data-tech="supabase">Supabase</span>
+                            <span class="tech" data-tech="tailwind">Tailwind CSS</span>
                         </div>
                         <div class="project-impact">
                             <span data-i18n="mantix.description"></span>
                         </div>
                         <div class="project-links">
-                            <!-- <a href="https://github.com/usuario/agenda" target="_blank" class="btn btn-outline">
-                                <i class="fab fa-github"></i> Repositorio
-                            </a> -->
-                            <a href="https://stockup-theta.vercel.app/" target="_blank" class="btn-outline2">
+                            <a href="https://mantix.vercel.app/" target="_blank" class="btn-outline2">
                                 <i class="fas fa-external-link-alt"></i> <span data-i18n="projects.deployment"></span>
                             </a>
                         </div>
                     </div>
                 </article>
-                <!-- Plantilla para más proyectos -->
-                <article class="project-card">
-                    <div class="project-content">
-                        <h3>Autograder IA</h3>
-                        <div class="project-tags">
-                            <span>Next.js</span>
-                            <span>Supabase</span>
-                            <span>Gemini IA</span>
-                        </div>
-                        <div class="project-impact">
-                            <span data-i18n="autograder.description"></span>
-                        </div>
-                        <div class="project-links">
-                            <!-- <a href="https://github.com/usuario/agenda" target="_blank" class="btn btn-outline">
-                                <i class="fab fa-github"></i> Repositorio
-                            </a> -->
-                            <!-- <a href="https://agenda.tunombre.dev" target="_blank" class="btn-outline2">
-                                <i class="fas fa-external-link-alt"></i> Despliegue
-                            </a> -->
-                        </div>
-                    </div>
-                </article>
-                <!-- Plantilla para más proyectos -->
-                <article class="project-card">
+                <!-- TrainIA e IA Chatbot ocultos hasta tener el enlace de despliegue
+                <article class="project-card" data-skills="react,fullstack,database,ai">
                     <div class="project-content">
                         <h3>TrainIA</h3>
                         <div class="project-tags">
-                            <span>Next.js</span>
-                            <span>Supabase</span>
-                            <span>Gemini IA</span>
-                            <span>Grupo</span>
+                            <span class="tech" data-tech="nextjs">Next.js</span>
+                            <span class="tech" data-tech="supabase">Supabase</span>
+                            <span class="tech" data-tech="gemini">Gemini</span>
                         </div>
                         <div class="project-impact">
                             <span data-i18n="trainia.description"></span>
                         </div>
-                        <div class="project-links">
-                            <a href="https://github.com/usuario/agenda" target="_blank" class="btn btn-outline">
-                                <i class="fab fa-github"></i> <span data-i18n="projects.repository"></span> 
-                            </a>
-                            <a href="https://stockup-theta.vercel.app/" target="_blank" class="btn-outline2">
-                                <i class="fas fa-external-link-alt"></i> <span data-i18n="projects.deployment"></span>
-                            </a>
-                        </div>
+                        <div class="project-links"></div>
                     </div>
                 </article>
-                <!-- Plantilla para más proyectos -->
-                <article class="project-card">
+                <article class="project-card" data-skills="react,fullstack,database,ai">
                     <div class="project-content">
                         <h3>IA Chatbot</h3>
                         <div class="project-tags">
-                            <span>Next.js</span>
-                            <span>Supabase</span>
-                            <span>Gemini IA</span>
+                            <span class="tech" data-tech="nextjs">Next.js</span>
+                            <span class="tech" data-tech="supabase">Supabase</span>
+                            <span class="tech" data-tech="gemini">Gemini</span>
                         </div>
                         <div class="project-impact">
                             <span data-i18n="chatbot.description"></span>
                         </div>
+                        <div class="project-links"></div>
+                    </div>
+                </article>
+                -->
+                <article class="project-card" data-skills="react,fullstack,database">
+                    <div class="project-content">
+                        <h3>Frog Board</h3>
+                        <div class="project-tags">
+                            <span class="tech" data-tech="react">React</span>
+                            <span class="tech" data-tech="vite">Vite</span>
+                            <span class="tech" data-tech="supabase">Supabase</span>
+                            <span class="tech" data-tech="typescript">TypeScript</span>
+                        </div>
+                        <div class="project-impact">
+                            <span data-i18n="frogboard.description"></span>
+                        </div>
                         <div class="project-links">
-                            <a href="" target="_blank" class="btn btn-outline">
-                                <i class="fab fa-github"></i> <span data-i18n="projects.repository"></span> 
-                            </a>
-                            <a href="https://stockup-theta.vercel.app/" target="_blank" class="btn-outline2">
-                                <i class="fas fa-external-link-alt"></i> <span data-i18n="projects.deployment"></span>
+                            <span class="private-repo">
+                                <button type="button" class="btn btn-outline" disabled>
+                                    <i class="fab fa-github"></i>
+                                    <span data-i18n="projects.repository">Repositorio</span>
+                                </button>
+                            </span>
+                            <a href="https://jiraiya-s-family-board.vercel.app/" target="_blank" class="btn-outline2">
+                                <i class="fas fa-external-link-alt"></i> <span data-i18n="projects.deployment">Despliegue</span>
                             </a>
                         </div>
                     </div>
                 </article>
-                <!-- Plantilla para más proyectos -->
-                <article class="project-card">
+                <article class="project-card" data-skills="viz">
+                    <div class="project-content">
+                        <h3>Figuras de Lissajous</h3>
+                        <div class="project-tags">
+                            <span class="tech" data-tech="javascript">JavaScript</span>
+                        </div>
+                        <div class="project-impact">
+                            <span data-i18n="lissajous.description"></span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Jsgallardo82/figuras-lissajous" target="_blank" class="btn btn-outline">
+                                <i class="fab fa-github"></i>
+                                <span data-i18n="projects.repository">Repositorio</span>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+                <article class="project-card" data-skills="viz">
+                    <div class="project-content">
+                        <h3>Circunferencia modular</h3>
+                        <div class="project-tags">
+                            <span class="tech" data-tech="javascript">JavaScript</span>
+                        </div>
+                        <div class="project-impact">
+                            <span data-i18n="modular.description"></span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Jsgallardo82/circunferencia-modular" target="_blank" class="btn btn-outline">
+                                <i class="fab fa-github"></i>
+                                <span data-i18n="projects.repository">Repositorio</span>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+                <article class="project-card" data-skills="python">
                     <div class="project-content">
                         <h3>Punto y fama</h3>
                         <div class="project-tags">
-                            <span>Python</span>
-                            <span>Personal</span>
+                            <span class="tech" data-tech="python">Python</span>
                         </div>
                         <div class="project-impact">
                             <span data-i18n="puntoyfama.description"></span>
                         </div>
                         <div class="project-links">
-                            <a href="" target="_blank" class="btn btn-outline">
+                            <a href="https://github.com/Jsgallardo82/puntoyfama" target="_blank" class="btn btn-outline">
                                 <i class="fab fa-github"></i> <span data-i18n="projects.repository"></span> 
-                            </a>
-                            <a href="" target="_blank" class="btn-outline2">
-                                <i class="fas fa-external-link-alt"></i> <span data-i18n="projects.deployment"></span>
                             </a>
                         </div>
                     </div>
                 </article>
                 <!-- Plantilla para más proyectos -->
-                <article class="project-card">
+                <article class="project-card" data-skills="react">
                     <div class="project-content">
                         <h3>Ahorcado Siglo XXXI</h3>
                         <div class="project-tags">
-                            <span>Next.js</span>
-                            <span>Personal</span>
+                            <span class="tech" data-tech="nextjs">Next.js</span>
+                            <span class="tech" data-tech="javascript">JavaScript</span>
                         </div>
                         <div class="project-impact">
                             <span data-i18n="ahorcadosigloxxx1.description"></span>
                         </div>
                         <div class="project-links">
-                            <a href="" target="_blank" class="btn btn-outline">
+                            <a href="https://github.com/Jsgallardo82/ahorcadosigloxxxi" target="_blank" class="btn btn-outline">
                                 <i class="fab fa-github"></i> <span data-i18n="projects.repository"></span> 
                             </a>
-                            <a href="" target="_blank" class="btn-outline2">
+                            <a href="https://ahorcadosigloxxxi.vercel.app/" target="_blank" class="btn-outline2">
                                 <i class="fas fa-external-link-alt"></i> <span data-i18n="projects.deployment"></span>
                             </a>
                         </div>
@@ -254,30 +438,95 @@
         <div class="container">
             <div class="about-content">
                 <div class="about-text">
-                    <h2 data-i18n="about.title">Sobre Mí (Desarrollador)</h2>
-                    <p data-i18n="about.description">Soy un apasionado desarrollador web con experiencia en crear soluciones digitales efectivas. Me especializo en desarrollo frontend con un fuerte enfoque en implementacion de la IA, buenas prácticas y soluciones innovadoras.</p>
+                    <h2 data-i18n="about.title">Sobre mí</h2>
+                    <p data-i18n="about.description">Soy desarrollador web y me gusta armar soluciones digitales que de verdad se usen. Trabajo sobre todo el frontend, con la IA metida en el proceso, buenas prácticas y una solución clara.</p>
                     
-                    <h3 data-i18n="about.stack.title">Stack Principal</h3>
-                    <ul class="stack-list">
-                        <li data-i18n="about.stack.html">HTML5, CSS3, JavaScript (ES6+)</li>
-                        <li data-i18n="about.stack.react">React.js</li>
-                        <li data-i18n="about.stack.node">Node.js</li>
-                        <li data-i18n="about.stack.database">Bases de datos SQL (Supabase)/NoSQL (Firebase)</li>
-                        <li data-i18n="about.stack.python">Python</li>
-                        <li data-i18n="about.stack.ai">IA (Gemini)</li>
-                    </ul>
                 </div>
                 <div class="about-text">
-                    <h2 data-i18n="about.personal.title">Sobre Mí (personal)</h2>
-                    <p data-i18n="about.personal.description">Me gusta mucho la cultura del anime y los videojuegos, me gustan las peliculas y series divertidas, ademas de hacer deporte como el basketball o ir al gimnasio. Como físico tambien soy muy objetivo con la realidad que afrontamos y el deseo de mejorarla tanto para nosotros como las futuras generaciones.</p>
-                    <h3 data-i18n="about.personal.stack.title">Stack Personal</h3>
+                    <h2 data-i18n="about.personal.title">Fuera del código</h2>
+                    <p data-i18n="about.personal.description">Me gusta el anime y los videojuegos, las películas y las series divertidas, y el deporte: basketball y el gimnasio. Como físico también miro la realidad con objetividad, y me mueve mejorarla para nosotros y para las generaciones que vienen.</p>
+                    <h3 data-i18n="about.personal.stack.title">Cómo trabajo</h3>
                     <ul class="stack-list">
-                        <li data-i18n="about.personal.stack.team">Capacidad de trabajar en equipo</li>
-                        <li data-i18n="about.personal.stack.learn">Capacidad de aprender rápido</li>
-                        <li data-i18n="about.personal.stack.solve">Capacidad de resolver problemas</li>
-                        <li data-i18n="about.personal.stack.innovate">Capacidad implementar soluciones innovadoras</li>
+                        <li data-i18n="about.personal.stack.team">Trabajar en equipo</li>
+                        <li data-i18n="about.personal.stack.learn">Aprender rápido</li>
+                        <li data-i18n="about.personal.stack.solve">Resolver problemas</li>
+                        <li data-i18n="about.personal.stack.innovate">Llevar una idea hasta una solución que se use</li>
 
                     </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="stack" class="stack-section">
+        <div class="container">
+            <h2 data-i18n="stack.title">Stack</h2>
+            <div class="tech-stack">
+                <div class="tech-group">
+                    <h4 data-i18n="stack.languages">Lenguajes</h4>
+                    <div class="tech-row">
+                        <span class="tech" data-tech="python">Python</span>
+                        <span class="tech" data-tech="javascript">JavaScript</span>
+                        <span class="tech" data-tech="typescript">TypeScript</span>
+                    </div>
+                </div>
+                <div class="tech-group">
+                    <h4 data-i18n="stack.frameworks">Frameworks</h4>
+                    <div class="tech-row">
+                        <span class="tech" data-tech="react">React</span>
+                        <span class="tech" data-tech="nextjs">Next.js</span>
+                        <span class="tech" data-tech="vite">Vite</span>
+                        <span class="tech" data-tech="astro">Astro</span>
+                        <span class="tech" data-tech="tailwind">Tailwind CSS</span>
+                        <span class="tech" data-tech="node">Node.js</span>
+                        <span class="tech" data-tech="fastapi">FastAPI</span>
+                        <span class="tech" data-tech="streamlit">Streamlit</span>
+                    </div>
+                </div>
+                <div class="tech-group">
+                    <h4 data-i18n="stack.data">Datos</h4>
+                    <div class="tech-row">
+                        <span class="tech" data-tech="pandas">Pandas</span>
+                        <span class="tech" data-tech="numpy">NumPy</span>
+                        <span class="tech" data-tech="sklearn">scikit-learn</span>
+                        <span class="tech" data-tech="opencv">OpenCV</span>
+                    </div>
+                </div>
+                <div class="tech-group">
+                    <h4 data-i18n="stack.ai">IA</h4>
+                    <div class="tech-row">
+                        <span class="tech" data-tech="gemini">Gemini</span>
+                        <span class="tech" data-tech="claude">Claude</span>
+                        <span class="tech" data-tech="cursor">Cursor</span>
+                        <span class="tech" data-tech="lovable">Lovable</span>
+                    </div>
+                </div>
+                <div class="tech-group">
+                    <h4 data-i18n="stack.cloud">Nube</h4>
+                    <div class="tech-row">
+                        <span class="tech" data-tech="firebase">Firebase</span>
+                        <span class="tech" data-tech="supabase">Supabase</span>
+                        <span class="tech" data-tech="gcloud">Google Cloud</span>
+                        <span class="tech" data-tech="vercel">Vercel</span>
+                    </div>
+                </div>
+                <div class="tech-group">
+                    <h4 data-i18n="stack.tools">Herramientas</h4>
+                    <div class="tech-row">
+                        <span class="tech" data-tech="git">Git</span>
+                        <span class="tech" data-tech="github">GitHub</span>
+                        <span class="tech" data-tech="vscode">VS Code</span>
+                    </div>
+                </div>
+                <div class="tech-group">
+                    <h4 data-i18n="stack.docs">Documentos</h4>
+                    <div class="tech-row">
+                        <span class="tech" data-tech="pdf">PDF</span>
+                        <span class="tech" data-tech="word">Word</span>
+                        <span class="tech" data-tech="powerpoint">PowerPoint</span>
+                        <span class="tech" data-tech="excel">Excel</span>
+                        <span class="tech" data-tech="latex">LaTeX</span>
+                    </div>
                 </div>
             </div>
         </div>

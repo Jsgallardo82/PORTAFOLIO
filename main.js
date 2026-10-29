@@ -13,8 +13,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 behavior: 'smooth'
             });
             
-            // Cerrar menú móvil si está abierto
-            if (document.querySelector('.nav-links').classList.contains('active')) {
+            const navLinksMenu = document.querySelector('.nav-links');
+            if (navLinksMenu && navLinksMenu.classList.contains('active')) {
                 toggleMobileMenu();
             }
         }
@@ -25,6 +25,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 const header = document.querySelector('.header');
 let lastScroll = 0;
 
+if (header) {
 window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
     
@@ -45,6 +46,7 @@ window.addEventListener('scroll', () => {
     
     lastScroll = currentScroll;
 });
+}
 
 // Añadir clase activa al enlace de navegación actual
 const sections = document.querySelectorAll('section');
@@ -79,7 +81,9 @@ mobileMenuBtn.className = 'mobile-menu-btn';
 mobileMenuBtn.innerHTML = '☰';
 mobileMenuBtn.setAttribute('aria-label', 'Menú de navegación');
 
-document.querySelector('nav').appendChild(mobileMenuBtn);
+const nav = document.querySelector('nav');
+if (nav) {
+nav.appendChild(mobileMenuBtn);
 
 function toggleMobileMenu() {
     const navLinks = document.querySelector('.nav-links');
@@ -98,6 +102,7 @@ navItems.forEach(item => {
         }
     });
 });
+}
 
 document.addEventListener('DOMContentLoaded', function() {
     // Inicializar acordeones de proyectos
@@ -187,9 +192,78 @@ projectCards.forEach(card => {
     });
 });
 
-// Actualizar año en el footer
-const currentYear = new Date().getFullYear();
-const footerYear = document.querySelector('.footer p');
-if (footerYear) {
-    footerYear.innerHTML = `&copy; ${currentYear} Tu Nombre. Todos los derechos reservados.`;
+const skillButtons = document.querySelectorAll('.signal[data-skill]');
+const filterableCards = document.querySelectorAll('.project-card[data-skills]');
+let activeSkill = null;
+
+function applySkillFilter(skill) {
+    filterableCards.forEach(card => {
+        const skills = (card.dataset.skills || '').split(',');
+        card.classList.toggle('is-hidden', Boolean(skill) && !skills.includes(skill));
+    });
+
+    skillButtons.forEach(button => {
+        const selected = button.dataset.skill === skill;
+        button.classList.toggle('active', selected);
+        button.setAttribute('aria-pressed', selected ? 'true' : 'false');
+    });
 }
+
+skillButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const skill = button.dataset.skill;
+        activeSkill = activeSkill === skill ? null : skill;
+        applySkillFilter(activeSkill);
+
+        if (activeSkill) {
+            const projects = document.getElementById('proyectos');
+            if (projects) {
+                projects.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+    });
+});
+
+const techIcons = {
+    python: 'https://cdn.simpleicons.org/python/3776AB',
+    javascript: 'https://cdn.simpleicons.org/javascript/F7DF1E',
+    typescript: 'https://cdn.simpleicons.org/typescript/3178C6',
+    react: 'https://cdn.simpleicons.org/react/61DAFB',
+    nextjs: 'https://cdn.simpleicons.org/nextdotjs/000000',
+    vite: 'https://cdn.simpleicons.org/vite/646CFF',
+    astro: 'https://cdn.simpleicons.org/astro/FF5D01',
+    tailwind: 'https://cdn.simpleicons.org/tailwindcss/06B6D4',
+    node: 'https://cdn.simpleicons.org/nodedotjs/5FA04E',
+    fastapi: 'https://cdn.simpleicons.org/fastapi/009688',
+    streamlit: 'https://cdn.simpleicons.org/streamlit/FF4B4B',
+    pandas: 'https://cdn.simpleicons.org/pandas/150458',
+    numpy: 'https://cdn.simpleicons.org/numpy/013243',
+    sklearn: 'https://cdn.simpleicons.org/scikitlearn/F7931E',
+    opencv: 'https://cdn.simpleicons.org/opencv/5C3EE8',
+    gemini: 'https://cdn.simpleicons.org/googlegemini/8E75B2',
+    claude: 'https://cdn.simpleicons.org/claude/D97757',
+    cursor: 'https://cdn.simpleicons.org/cursor/000000',
+    lovable: 'https://api.iconify.design/logos/lovable-icon.svg',
+    firebase: 'https://cdn.simpleicons.org/firebase/FFCA28',
+    supabase: 'https://cdn.simpleicons.org/supabase/3ECF8E',
+    gcloud: 'https://cdn.simpleicons.org/googlecloud/4285F4',
+    vercel: 'https://cdn.simpleicons.org/vercel/000000',
+    git: 'https://cdn.simpleicons.org/git/F05032',
+    github: 'https://cdn.simpleicons.org/github/181717',
+    vscode: 'https://api.iconify.design/logos/visual-studio-code.svg',
+    pdf: 'file-pdf',
+    word: 'file-word',
+    powerpoint: 'file-powerpoint',
+    excel: 'file-excel',
+    latex: 'https://cdn.simpleicons.org/latex/008080'
+};
+
+document.querySelectorAll('.tech[data-tech]').forEach(chip => {
+    if (chip.querySelector('img, i')) return;
+    const icon = techIcons[chip.dataset.tech];
+    if (!icon) return;
+    const mark = icon.startsWith('http')
+        ? `<img src="${icon}" alt="" width="16" height="16">`
+        : `<i class="fas fa-${icon}" aria-hidden="true"></i>`;
+    chip.insertAdjacentHTML('afterbegin', mark);
+});

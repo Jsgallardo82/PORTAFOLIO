@@ -5,16 +5,9 @@ function setTheme(themeName) {
     document.documentElement.setAttribute('data-theme', themeName);
     
     // Actualizar el estado activo de los botones
-    document.querySelectorAll('.theme-btn').forEach(btn => {
-        btn.classList.remove('active');
-        if (btn.getAttribute('data-theme') === themeName) {
-            btn.classList.add('active');
-            // Asegurarse de que el color de fondo del botón activo coincida con el tema
-            btn.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--primary-color');
-        } else {
-            // Restaurar el color de fondo predeterminado para los botones inactivos
-            btn.style.backgroundColor = '';
-        }
+    document.querySelectorAll('.theme-btn[data-theme]').forEach(btn => {
+        btn.style.backgroundColor = '';
+        btn.classList.toggle('active', btn.getAttribute('data-theme') === themeName);
     });
 }
 
@@ -25,10 +18,9 @@ function toggleBorders() {
     localStorage.setItem('bordersVisible', isVisible);
     
     const borderButton = document.getElementById('toggleBorders');
-    if (isVisible) {
-        borderButton.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--primary-color');
-    } else {
+    if (borderButton) {
         borderButton.style.backgroundColor = '';
+        borderButton.classList.toggle('active', isVisible);
     }
 }
 
@@ -45,7 +37,8 @@ function loadBordersState() {
         document.body.classList.add('borders-visible');
         const borderButton = document.getElementById('toggleBorders');
         if (borderButton) {
-            borderButton.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--primary-color');
+            borderButton.style.backgroundColor = '';
+            borderButton.classList.add('active');
         }
     }
 }
