@@ -193,13 +193,18 @@ projectCards.forEach(card => {
 });
 
 const skillButtons = document.querySelectorAll('.signal[data-skill]');
+const availabilityButtons = document.querySelectorAll('.project-filters [data-filter]');
 const filterableCards = document.querySelectorAll('.project-card[data-skills]');
 let activeSkill = null;
+const activeAvailability = new Set();
 
 function applySkillFilter(skill) {
     filterableCards.forEach(card => {
         const skills = (card.dataset.skills || '').split(',');
-        card.classList.toggle('is-hidden', Boolean(skill) && !skills.includes(skill));
+        const skillOk = !skill || skills.includes(skill);
+        const deployedOk = !activeAvailability.has('deployed') || card.dataset.deployed === 'true';
+        const publicOk = !activeAvailability.has('public') || card.dataset.public === 'true';
+        card.classList.toggle('is-hidden', !(skillOk && deployedOk && publicOk));
     });
 
     skillButtons.forEach(button => {
@@ -208,6 +213,50 @@ function applySkillFilter(skill) {
         button.setAttribute('aria-pressed', selected ? 'true' : 'false');
     });
 }
+
+availabilityButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const key = button.dataset.filter;
+        if (activeAvailability.has(key)) {
+            activeAvailability.delete(key);
+        } else {
+            activeAvailability.add(key);
+        }
+        const selected = activeAvailability.has(key);
+        button.classList.toggle('active', selected);
+        button.setAttribute('aria-pressed', selected ? 'true' : 'false');
+        applySkillFilter(activeSkill);
+    });
+});
+
+document.querySelectorAll('.project-card[data-detail]').forEach(card => {
+    const openDetail = () => {
+        const dialog = document.getElementById('detail-' + card.dataset.detail);
+        if (dialog && !dialog.open) dialog.showModal();
+    };
+
+    card.addEventListener('click', (event) => {
+        if (event.target.closest('a, button')) return;
+        openDetail();
+    });
+
+    card.addEventListener('keydown', (event) => {
+        if (event.target !== card) return;
+        if (event.key !== 'Enter' && event.key !== ' ') return;
+        event.preventDefault();
+        openDetail();
+    });
+});
+
+document.querySelectorAll('.project-dialog').forEach(dialog => {
+    dialog.addEventListener('click', (event) => {
+        if (event.target === dialog) dialog.close();
+    });
+    const closeButton = dialog.querySelector('.project-dialog-close');
+    if (closeButton) {
+        closeButton.addEventListener('click', () => dialog.close());
+    }
+});
 
 skillButtons.forEach(button => {
     button.addEventListener('click', () => {
