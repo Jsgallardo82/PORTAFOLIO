@@ -123,7 +123,6 @@
                                 </button>
                             </span>
                         </div>
-                        <p class="project-open" data-i18n="fitnessgym.detail.open">Ver ficha</p>
                     </div>
                 </article>
                 <article class="project-card" data-skills="react,fullstack,database" data-deployed="true" data-public="true" data-detail="shark" tabindex="0">
@@ -682,29 +681,6 @@
             <p class="copyright" data-i18n="footer.copyright"> 2025 Sebastian Gallardo. Todos los derechos reservados.</p>
         </div>
     </footer>
-
-    <dialog id="detail-fitness" class="project-dialog" aria-labelledby="detail-fitness-title">
-        <div class="project-dialog-bar">
-            <button type="button" class="project-dialog-close" data-i18n="fitnessgym.detail.close">Cerrar</button>
-        </div>
-        <div class="project-dialog-body">
-            <p class="project-dialog-kicker">Fitness Total Gym</p>
-            <h2 id="detail-fitness-title" data-i18n="fitnessgym.detail.title">Predecir quién deja de ir al gimnasio</h2>
-            <p data-i18n="fitnessgym.detail.p1">Con las planillas de asistencia de un gimnasio familiar en Colombia, de 2021 a 2026, construí un modelo para ordenar a quién conviene contactar. La pregunta es concreta: de quienes vinieron en los 90 días previos al 17 de julio de 2026, quién no regresa en los 45 días siguientes.</p>
-            <p data-i18n="fitnessgym.detail.p2">El historial completo produce un acierto casi perfecto, porque la etiqueta se arma con la misma recencia que entra como variable. Esa fuga se demostró y se descartó. El modelo que queda es un bosque aleatorio sobre 470 personas, sin búsqueda de hiperparámetros y con una configuración fija, comparado con gradient boosting y regresión logística.</p>
-            <p data-i18n="fitnessgym.detail.p3">En la prueba de 94 personas el F1 macro es 0,69 y el AUC 0,77. Con el umbral de 0,50 detecta a 47 de los 64 desertores: recall 0,73 y precisión 0,82. Contactar al 20 % de mayor riesgo alcanza al 28,1 % de quienes se van, con un lift de 1,39. El aviso cuesta un pase diario de 3.500 pesos y se compensa si vuelve más del 7 % de los contactados.</p>
-            <p data-i18n="fitnessgym.detail.p4">La lista no avisa sola al cliente. La lee la administración, en la pestaña Deserción, y la recepción contacta de arriba hacia abajo. Los nombres no salen de este resumen: cada persona queda como un identificador reversible solo con el catálogo local.</p>
-            <figure>
-                <img src="assets/images/lista_riesgo.png" alt="Lista de riesgo del corte del 17 de julio de 2026, sin nombres" width="1200" height="675">
-                <figcaption data-i18n="fitnessgym.detail.fig.risk">Lista de riesgo del corte del 17 de julio de 2026. 470 personas con al menos una visita en los 90 días previos, sin nombres.</figcaption>
-            </figure>
-            <p data-i18n="fitnessgym.detail.p5">El 87,9 % de los ingresos es entrenamiento y mensualidad. Proteínas, agua y el resto del mostrador suman el 12,1 %. Por eso el costo de no detectar a quien se va es una mensualidad de 50.000 pesos, no una venta de mostrador.</p>
-            <figure>
-                <img src="assets/images/productos.png" alt="Ingresos del gimnasio: entrenamientos y mensualidad frente al mostrador" width="1200" height="675">
-                <figcaption data-i18n="fitnessgym.detail.fig.revenue">De qué vive el gimnasio: el 87,9 % de los ingresos es entrenamiento y mensualidad.</figcaption>
-            </figure>
-        </div>
-    </dialog>
 
     <dialog id="project-detail" class="project-dialog" aria-labelledby="project-detail-title">
         <div class="project-dialog-bar">

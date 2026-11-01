@@ -1,28 +1,95 @@
+const portfolioAuthor = {
+    name: 'Juan Sebastian Gallardo Baena',
+    url: 'https://github.com/Jsgallardo82'
+};
+
 const projectDetails = {
+    fitness: {
+        kicker: 'Fitness Total Gym',
+        title: {
+            es: 'Predecir quién deja de ir al gimnasio',
+            en: 'Predicting who stops coming to the gym'
+        },
+        authors: [portfolioAuthor],
+        images: [
+            {
+                src: 'assets/images/lista_riesgo.png',
+                alt: {
+                    es: 'Lista de riesgo del corte del 17 de julio de 2026, sin nombres',
+                    en: 'Risk list for the 17 July 2026 cutoff, with no names'
+                },
+                caption: {
+                    es: 'Lista de riesgo del corte del 17 de julio de 2026. 470 personas con al menos una visita en los 90 días previos, sin nombres.',
+                    en: 'Risk list for the 17 July 2026 cutoff. 470 people with at least one visit in the previous 90 days, with no names.'
+                }
+            },
+            {
+                src: 'assets/images/productos.png',
+                alt: {
+                    es: 'Ingresos del gimnasio: entrenamientos y mensualidad frente al mostrador',
+                    en: 'Gym revenue: training and memberships against the counter'
+                },
+                caption: {
+                    es: 'De qué vive el gimnasio: el 87,9 % de los ingresos es entrenamiento y mensualidad.',
+                    en: 'What the gym lives on: 87.9% of revenue is training and memberships.'
+                }
+            }
+        ],
+        description: {
+            es: 'Con las planillas de asistencia de un gimnasio familiar en Colombia, de 2021 a 2026, construí un modelo para ordenar a quién conviene contactar. La pregunta es concreta: de quienes vinieron en los 90 días previos al 17 de julio de 2026, quién no regresa en los 45 días siguientes. El historial completo produce un acierto casi perfecto, porque la etiqueta se arma con la misma recencia que entra como variable. Esa fuga se demostró y se descartó.',
+            en: 'Using the attendance sheets of a family gym in Colombia, from 2021 to 2026, I built a model that ranks who is worth contacting. The question is specific: among people who came in the 90 days before 17 July 2026, who does not come back in the next 45 days. The full history produces an almost perfect score, because the label is built from the same recency that enters as a feature. That leak was demonstrated and discarded.'
+        },
+        features: {
+            es: [
+                'El modelo que queda es un bosque aleatorio sobre 470 personas, sin búsqueda de hiperparámetros y con una configuración fija, comparado con gradient boosting y regresión logística.',
+                'En la prueba de 94 personas el F1 macro es 0,69 y el AUC 0,77. Con el umbral de 0,50 detecta a 47 de los 64 desertores: recall 0,73 y precisión 0,82.',
+                'Contactar al 20 % de mayor riesgo alcanza al 28,1 % de quienes se van, con un lift de 1,39. El aviso cuesta un pase diario de 3.500 pesos y se compensa si vuelve más del 7 % de los contactados.',
+                'La lista la lee la administración, en la pestaña Deserción, y la recepción contacta de arriba hacia abajo. Cada persona queda como un identificador.',
+                'El 87,9 % de los ingresos es entrenamiento y mensualidad. El costo de no detectar a quien se va es una mensualidad de 50.000 pesos.'
+            ],
+            en: [
+                'The model that remains is a random forest on 470 people, with no hyperparameter search and a fixed configuration, compared with gradient boosting and logistic regression.',
+                'On a test of 94 people the macro F1 is 0.69 and the AUC is 0.77. At a threshold of 0.50 it finds 47 of the 64 people who leave: recall 0.73 and precision 0.82.',
+                'Contacting the 20% at highest risk reaches 28.1% of those who leave, with a lift of 1.39. The notice costs a day pass of 3,500 pesos and pays for itself if more than 7% of the people contacted come back.',
+                'Administration reads the list on the Churn tab, and the front desk contacts people from the top down. Each person stays as an identifier.',
+                '87.9% of revenue is training and memberships. Missing someone who leaves costs a 50,000-peso membership.'
+            ]
+        },
+        links: []
+    },
     shark: {
         kicker: 'Shark Caribe',
         title: {
             es: 'Cobrar varias boletas en un pago y marcar cuál QR ya entró',
             en: 'Charge several tickets in one payment and mark which QR already entered'
         },
-        paragraphs: {
+        authors: [portfolioAuthor],
+        description: {
+            es: 'El sitio cobra las boletas de Shark Caribe, Pitch Competition 2026. La gran final está escrita para el 25 de noviembre de 2026, en el Hotel Dann Carlton de Barranquilla. La compra pública no pide cuenta: el modal abre Wompi y, si el pago queda aprobado, manda el QR por correo.',
+            en: 'The site sells tickets for Shark Caribe, Pitch Competition 2026. The final is written for 25 November 2026 at Hotel Dann Carlton in Barranquilla. The public purchase does not ask for an account: the modal opens Wompi and, if the payment is approved, emails the QR.'
+        },
+        features: {
             es: [
-                'El sitio se presenta como Shark Caribe, Pitch Competition 2026. La gran final está escrita para el 25 de noviembre de 2026, en el Hotel Dann Carlton de Barranquilla. El primer commit, del 22 de julio de 2026, es la primera vista del homepage.',
-                'La compra pública no pide cuenta. El modal crea la fila pendiente y abre Wompi. Si el pago queda APPROVED, el webhook marca la boleta como pagada, un trigger pone el número y Resend manda el correo con el QR. El comprador vuelve a la página de resultado.',
-                'Comprar varias boletas chocó con dos restricciones UNIQUE, la del correo y la del documento. Una fila pendiente de un pago rechazado también dejaba al comprador fuera. El script las quita y comparte una sola referencia de Wompi entre las boletas de esa compra. El webhook tiene que desplegarse antes de ese SQL.',
-                'El inventario físico inserta 100 boletas preferenciales y 100 generales ya en estado pagado. El admin las imprime en una hoja de 32 por 47 cm, con un QR distinto por boleta. Esas filas cuentan como pagadas en los reportes, y el QR responde aunque la boleta no se haya vendido en caja.'
+                'Si el pago queda APPROVED, el webhook marca la boleta como pagada, un trigger pone el número y Resend manda el correo con el QR.',
+                'Varias boletas de una misma compra comparten una sola referencia de Wompi. Antes, el correo y el documento eran únicos, y un pago rechazado dejaba al comprador fuera.',
+                'El inventario físico inserta 100 boletas preferenciales y 100 generales ya pagadas. El admin las imprime en una hoja de 32 por 47 cm, con un QR distinto por boleta.',
+                'El QR responde aunque la boleta no se haya vendido en caja, y esas filas cuentan como pagadas en los reportes.'
             ],
             en: [
-                'The site presents itself as Shark Caribe, Pitch Competition 2026. The final is written for 25 November 2026 at Hotel Dann Carlton in Barranquilla. The first commit, on 22 July 2026, is the first view of the homepage.',
-                'The public purchase does not ask for an account. The modal creates the pending row and opens Wompi. If the payment is APPROVED, the webhook marks the ticket as paid, a trigger sets the number, and Resend emails the QR. The buyer returns to the result page.',
-                'Buying several tickets collided with two UNIQUE constraints, email and document. A pending row from a rejected payment also locked the buyer out. The script removes them and shares one Wompi reference across the tickets of that purchase. The webhook has to be deployed before that SQL.',
-                'Physical inventory inserts 100 preferential and 100 general tickets already marked paid. Admin prints them on a 32 by 47 cm sheet, with a different QR per ticket. Those rows count as paid in the reports, and the QR answers even if the ticket was not sold at the box office.'
+                'If the payment is APPROVED, the webhook marks the ticket paid, a trigger sets the number, and Resend emails the QR.',
+                'Several tickets in one purchase share a single Wompi reference. Before, email and document were unique, and a rejected payment locked the buyer out.',
+                'Physical inventory inserts 100 preferential and 100 general tickets already marked paid. Admin prints them on a 32 by 47 cm sheet, with a different QR per ticket.',
+                'The QR answers even if the ticket was not sold at the box office, and those rows count as paid in the reports.'
             ]
         },
         timeline: {
-            es: ['22 de julio de 2026. Primera vista del homepage. En git, los 58 commits figuran con el autor unknown.'],
-            en: ['22 July 2026. First view of the homepage. In git, all 58 commits are signed unknown.']
-        }
+            es: ['22 de julio de 2026. Primera vista del homepage.'],
+            en: ['22 July 2026. First view of the homepage.']
+        },
+        links: [
+            { kind: 'repo', href: 'https://github.com/Jsgallardo82/SharkCaribeHome' },
+            { kind: 'deploy', href: 'https://www.sharkcaribe.co/' }
+        ]
     },
     zitter: {
         kicker: 'Zitterbewegung',
@@ -30,20 +97,25 @@ const projectDetails = {
             es: 'Girar el acoplamiento Ω, guardar el cuaderno y pasar 32 diapositivas',
             en: 'Turn the Ω coupling, keep the notebook, and step through 32 slides'
         },
-        paragraphs: {
+        authors: [portfolioAuthor],
+        description: {
+            es: 'Zitterbewegung Engine Lite v6.0 abre el simulador sin cuenta. El idioma arranca en español y el tema en oscuro. Saqué el slider de Ω y dejé una perilla, un cuaderno de cinco misiones y una presentación de 32 láminas.',
+            en: 'Zitterbewegung Engine Lite v6.0 opens the simulator without an account. Language starts in Spanish and the theme in dark. I removed the Ω slider and left a knob, a five-mission notebook, and a 32-slide presentation.'
+        },
+        features: {
             es: [
-                'El producto se llama Zitterbewegung Engine Lite v6.0. En el encabezado quedó ZITTERBEWEGUNG_ENGINE v6.0. Se entra sin cuenta. El idioma arranca en español y el tema en oscuro. Los dos se guardan en el navegador.',
-                'El 12 de mayo saqué el slider de Ω y puse una perilla de 270°. Se gira con el dedo, con la rueda, con un clic en el arco o con un número en hertz. La imagen iba corrida y le dejé un offset de −75°. Un láser se apaga si Ω está por debajo del 1% y se enciende al subir el valor.',
-                'El 14 de mayo añadí el fader vertical y abrí el cuaderno desde la barra inferior. Son cinco misiones. El alumno escribe su nombre y las respuestas. El botón dice Descargar PDF, y el PDF sale del diálogo de impresión. El HTML viaja en un iframe del tamaño de una A4. Chrome no pintaba el documento si el iframe no tenía tamaño, así que dejé un respaldo de 600 ms.',
-                'El 21 de agosto monté la presentación. Hay 32 láminas. Se pasa con las flechas, la barra espaciadora o los puntos. F pone la presentación a pantalla completa. Las curvas marcadas VIVO son senos dibujados en el canvas. En el reporte comparativo, con Ω = Ω_SB = 5×10⁴ Hz, el error máximo de Magnus en ⟨S₁⟩ es 0,14 μm. La fidelidad atómica que escribí ahí supera 0,996.',
-                'El 22 de agosto una ruta desconocida dejó de quedar en blanco: muestra un 404 y un enlace al simulador. La vista 3D pasó a cargarse solo en el cliente. El 8 de septiembre Vercel no compilaba porque el package.json y el lock no coincidían. Dejé Next en ^15.3.9 y React en ^19.1.2. El build limpio terminó con 3 rutas estáticas.'
+                'La perilla de 270° se gira con el dedo, la rueda, un clic en el arco o un número en hertz. Un láser se apaga si Ω está por debajo del 1 %.',
+                'El cuaderno pide el nombre y las respuestas. El PDF sale del diálogo de impresión, en un iframe del tamaño de una A4.',
+                'La presentación se pasa con las flechas, la barra espaciadora o los puntos. F la pone a pantalla completa.',
+                'En el reporte comparativo, con Ω = Ω_SB = 5×10⁴ Hz, el error máximo de Magnus en ⟨S₁⟩ es 0,14 μm. La fidelidad atómica escrita ahí supera 0,996.',
+                'Una ruta desconocida muestra un 404 con enlace al simulador. La vista 3D se carga solo en el cliente.'
             ],
             en: [
-                'The product is called Zitterbewegung Engine Lite v6.0. The header reads ZITTERBEWEGUNG_ENGINE v6.0. It opens without an account. Language starts in Spanish and the theme in dark. Both are stored in the browser.',
-                'On 12 May I removed the Ω slider and put in a 270° knob. It turns with a finger, the wheel, a click on the arc, or a number in hertz. The image sat off-center, so I left a −75° offset. A laser turns off if Ω is under 1% and turns on as the value rises.',
-                'On 14 May I added the vertical fader and opened the notebook from the bottom bar. There are five missions. The student writes a name and the answers. The button says Download PDF, and the PDF comes from the print dialog. The HTML travels in an A4-sized iframe. Chrome would not paint the document if the iframe had no size, so I left a 600 ms fallback.',
-                'On 21 August I built the presentation. There are 32 slides. You move with the arrows, the space bar, or the dots. F makes it fullscreen. The curves marked VIVO are sines drawn on a canvas. In the comparative report, with Ω = Ω_SB = 5×10⁴ Hz, the maximum Magnus error in ⟨S₁⟩ is 0.14 μm. The atomic fidelity written there is above 0.996.',
-                'On 22 August an unknown route stopped rendering blank: it shows a 404 and a link back to the simulator. The 3D view loads only on the client. On 8 September Vercel would not compile because package.json and the lock did not match. I left Next at ^15.3.9 and React at ^19.1.2. The clean build finished with 3 static routes.'
+                'The 270° knob turns with a finger, the wheel, a click on the arc, or a number in hertz. A laser turns off if Ω is under 1%.',
+                'The notebook asks for a name and the answers. The PDF comes from the print dialog, in an A4-sized iframe.',
+                'The presentation moves with the arrows, the space bar, or the dots. F makes it fullscreen.',
+                'In the comparative report, with Ω = Ω_SB = 5×10⁴ Hz, the maximum Magnus error in ⟨S₁⟩ is 0.14 μm. The atomic fidelity written there is above 0.996.',
+                'An unknown route shows a 404 with a link back to the simulator. The 3D view loads only on the client.'
             ]
         },
         timeline: {
@@ -61,7 +133,10 @@ const projectDetails = {
                 '22 August. 404 page, and the 3D view loads only on the client.',
                 '8 September. The Vercel build compiles again.'
             ]
-        }
+        },
+        links: [
+            { kind: 'repo', href: 'https://github.com/Jsgallardo82/proyecto-py-js' }
+        ]
     },
     ciced: {
         kicker: 'CICBED 2026',
@@ -69,36 +144,42 @@ const projectDetails = {
             es: 'Recibir un trabajo sin cuenta y devolverle al autor solo un código',
             en: 'Take a paper without an account and hand the author back only a code'
         },
-        paragraphs: {
+        authors: [portfolioAuthor],
+        description: {
+            es: 'El sitio se presenta como CICBED 2026, el I Congreso Internacional de Ciencias Básicas y Educación de la Institución Universitaria de Barranquilla. Quien entra ve el logo, la sede y las fechas del 23 al 27 de noviembre de 2026. Postular no pide cuenta: la persona llena el formulario y recibe un código.',
+            en: 'The site presents itself as CICBED 2026, the First International Congress of Basic Sciences and Education of Institución Universitaria de Barranquilla. A visitor sees the logo, the venue, and the dates 23 to 27 November 2026. Submitting a paper does not ask for an account: the person fills the form and receives a code.'
+        },
+        features: {
             es: [
-                'El sitio se presenta como CICBED 2026. El nombre largo en el contenido es I Congreso Internacional de Ciencias Básicas y Educación, de la Institución Universitaria de Barranquilla. La carpeta se llama semana-ciencias y el README todavía abre con CICED 2026.',
-                'Quien entra ve el logo, la sede y las fechas del 23 al 27 de noviembre de 2026. La convocatoria está abierta. La inscripción de asistentes y las olimpiadas están apagadas. El sitio pide que los buscadores no lo indexen.',
-                'Postular no pide cuenta. La persona llena el formulario y recibe un código que empieza por CICBED-2026. El reporte exige un PDF de hasta 20 MB. El póster no. El visitante no puede leer la tabla. Una función de la base inserta el trabajo y devuelve solo el código.',
-                'El PDF se sube antes de crear la fila. Si fuera al revés, el autor ya tendría código y el archivo podría no estar. El archivo se nombra con un UUID porque en ese momento el código todavía no existe. El enlace de descarga del panel vence a los 5 minutos.',
-                'El 26 de octubre el nombre pasó de CICED a CICBED y la modalidad ponencia pasó a reporte de investigación. Los códigos viejos se dejan. El 30 de septiembre medí el sitio del EIEM 8: una sola página, de unos 47.600 px en el celular. Por eso elegí portada corta y páginas sueltas. En git hay 43 commits y en todos el autor figura como unknown.'
+                'El código empieza por CICBED-2026. El reporte exige un PDF de hasta 20 MB. El póster no. El visitante no puede leer la tabla.',
+                'El PDF se sube antes de crear la fila y se nombra con un UUID, porque el código todavía no existe. El enlace de descarga del panel vence a los 5 minutos.',
+                'La convocatoria está abierta. La inscripción de asistentes y las olimpiadas están apagadas. El sitio pide que los buscadores no lo indexen.',
+                'El 26 de octubre el nombre pasó de CICED a CICBED. Los códigos viejos se dejan.'
             ],
             en: [
-                'The site presents itself as CICBED 2026. The long name in the content is the First International Congress of Basic Sciences and Education, of Institución Universitaria de Barranquilla. The folder is called semana-ciencias and the README still opens with CICED 2026.',
-                'A visitor sees the logo, the venue, and the dates 23 to 27 November 2026. The call for papers is open. Attendee registration and the olympiads are off. The site asks search engines not to index it.',
-                'Submitting a paper does not ask for an account. The person fills the form and receives a code that starts with CICBED-2026. The report requires a PDF of up to 20 MB. The poster does not. A visitor cannot read the table. A database function inserts the paper and returns only the code.',
-                'The PDF is uploaded before the row is created. The other way around, the author would already have a code and the file might be missing. The file is named with a UUID because the code does not exist yet. The panel download link expires after 5 minutes.',
-                'On 26 October the name changed from CICED to CICBED and the talk modality became a research report. Old codes stay. On 30 September I measured the EIEM 8 site: one page, about 47,600 px on a phone. That is why I chose a short homepage and separate pages. Git has 43 commits and every author is signed unknown.'
+                'The code starts with CICBED-2026. The report requires a PDF of up to 20 MB. The poster does not. A visitor cannot read the table.',
+                'The PDF is uploaded before the row is created and named with a UUID, because the code does not exist yet. The panel download link expires after 5 minutes.',
+                'The call for papers is open. Attendee registration and the olympiads are off. The site asks search engines not to index it.',
+                'On 26 October the name changed from CICED to CICBED. Old codes stay.'
             ]
         },
         timeline: {
             es: [
-                '30 de septiembre de 2026. Medición del sitio del EIEM 8.',
+                '30 de septiembre de 2026. Medición del sitio del EIEM 8: una sola página, de unos 47.600 px en el celular.',
                 '26 de octubre de 2026. El nombre pasa de CICED a CICBED.',
                 '28 de octubre de 2026. La inscripción de olimpiadas sale hacia Microsoft Forms.',
                 '31 de octubre de 2026. El enlace de descarga del panel vence a los 5 minutos.'
             ],
             en: [
-                '30 September 2026. Measurement of the EIEM 8 site.',
+                '30 September 2026. Measurement of the EIEM 8 site: one page, about 47,600 px on a phone.',
                 '26 October 2026. The name changes from CICED to CICBED.',
                 '28 October 2026. Olympiad registration moves to Microsoft Forms.',
                 '31 October 2026. The panel download link expires after 5 minutes.'
             ]
-        }
+        },
+        links: [
+            { kind: 'deploy', href: 'https://cicbed.vercel.app/' }
+        ]
     },
     totalapp: {
         kicker: 'Total-App',
@@ -106,26 +187,28 @@ const projectDetails = {
             es: 'Qué toca entrenar hoy, y si el socio en riesgo es esta cuenta',
             en: 'What to train today, and whether the member at risk is this account'
         },
-        paragraphs: {
+        authors: [portfolioAuthor],
+        description: {
+            es: 'Total-App es una PWA en español para el celular, dentro del gimnasio. Quien llega crea una cuenta, rellena objetivo, modalidad y límites, y un modelo le devuelve la rutina del día para seguirla en un chat, con cronómetro y series.',
+            en: 'Total-App is a Spanish PWA for a phone, inside the gym. A new user creates an account, fills in a goal, a mode and limits, and a model returns the day’s routine to follow in a chat, with a timer and sets.'
+        },
+        features: {
             es: [
-                'La app se llama Total-App. El repositorio se llama smart-fit-coach. Es una PWA en español, pensada para el móvil, en el gimnasio. Quien llega crea una cuenta, rellena objetivo, modalidad y límites, y un modelo le devuelve la rutina del día. La ejecuta en un chat, con cronómetro y series.',
-                'El modelo de la rutina es google/gemini-3-flash-preview. El del chat es google/gemini-2.5-flash. Los dos salen por el gateway de Lovable. El pago no es un checkout: un administrador marca has_paid. Hasta entonces la persona espera en una pantalla de verificación.',
-                'La racha siempre devolvía 1. El entreno de hoy quedaba el primero de la lista, el bucle lo comparaba con ayer y cortaba. new Date sobre una fecha sola, en UTC-5, cae en el día anterior. El cálculo quedó en src/lib/streak.ts, con 15 tests. Los recordatorios tuvieron el mismo tipo de fallo: el día iba en español y el horario en inglés, y no se creó ninguno.',
-                'La planilla del gimnasio tenía unos 470 socios. La app tenía 15 cuentas. El modelo que puntúa la deserción no está en este repo. El emparejamiento por nombre solo ordena candidatos. No ata una fila a una cuenta: dos socios pueden llamarse igual.',
-                'El diseño del SQL, del onboarding y de los prompts está en este repositorio. Lovable aplica SQL y commitea en main. En git hay 203 commits. 180 son de gpt-engineer-app[bot], 22 de un autor llamado unknown y uno de Lovable.'
+                'La rutina usa google/gemini-3-flash-preview y el chat usa google/gemini-2.5-flash. Los dos salen por el gateway de Lovable.',
+                'El pago no es un checkout. Un administrador marca has_paid. Hasta entonces la persona espera en una pantalla de verificación.',
+                'La racha dejó de devolver siempre 1. new Date sobre una fecha sola, en UTC-5, caía en el día anterior. El cálculo quedó en src/lib/streak.ts, con 15 tests.',
+                'La planilla del gimnasio tenía unos 470 socios y la app 15 cuentas. El emparejamiento por nombre solo ordena candidatos: no ata una fila a una cuenta.'
             ],
             en: [
-                'The app is called Total-App. The repository is called smart-fit-coach. It is a Spanish PWA, meant for a phone, inside the gym. A new user creates an account, fills in a goal, a mode and limits, and a model returns the day’s routine. They run it in a chat, with a timer and sets.',
-                'The routine model is google/gemini-3-flash-preview. The chat model is google/gemini-2.5-flash. Both go through the Lovable gateway. Payment is not a checkout: an administrator sets has_paid. Until then the person waits on a verification screen.',
-                'The streak always returned 1. Today’s workout stayed first in the list, the loop compared it with yesterday and stopped. new Date on a date-only string, in UTC-5, falls on the previous day. The calculation landed in src/lib/streak.ts, with 15 tests. Reminders had the same kind of failure: the day was in Spanish and the schedule in English, and none were created.',
-                'The gym spreadsheet had about 470 members. The app had 15 accounts. The model that scores dropout is not in this repo. Matching by name only ranks candidates. It does not bind a row to an account: two members can share a name.',
-                'The SQL, onboarding and prompt design live in this repository. Lovable applies SQL and commits on main. Git has 203 commits. 180 are from gpt-engineer-app[bot], 22 from an author named unknown, and one from Lovable.'
+                'The routine uses google/gemini-3-flash-preview and the chat uses google/gemini-2.5-flash. Both go through the Lovable gateway.',
+                'Payment is not a checkout. An administrator sets has_paid. Until then the person waits on a verification screen.',
+                'The streak stopped always returning 1. new Date on a date-only string, in UTC-5, fell on the previous day. The calculation landed in src/lib/streak.ts, with 15 tests.',
+                'The gym spreadsheet had about 470 members and the app had 15 accounts. Matching by name only ranks candidates: it does not bind a row to an account.'
             ]
         },
-        timeline: {
-            es: ['El punto 30 de MEJORAS.md documenta el fallo de la racha. El punto 28 sigue abierto: el Site URL de Supabase apuntaba al preview de Lovable.'],
-            en: ['Point 30 of MEJORAS.md documents the streak bug. Point 28 is still open: the Supabase Site URL pointed at the Lovable preview.']
-        }
+        links: [
+            { kind: 'deploy', href: 'https://totalcoach.vercel.app/' }
+        ]
     },
     lab: {
         kicker: 'Lab Report Navigator',
@@ -133,20 +216,30 @@ const projectDetails = {
             es: '¿Cumple un informe de laboratorio el formato y las respuestas de la guía?',
             en: 'Does a lab report match the format and the guide’s answers?'
         },
-        paragraphs: {
+        authors: [portfolioAuthor],
+        description: {
+            es: 'LabReview recibe el informe de laboratorio de un docente y devuelve un dictamen en español, asistido por IA, sobre el formato y sobre las respuestas de la guía.',
+            en: 'LabReview takes a teacher’s lab report and returns a verdict in Spanish, assisted by AI, on the format and on the answers to the guide.'
+        },
+        features: {
             es: [
-                'Construí LabReview para que un docente suba un informe de laboratorio y reciba un dictamen asistido por IA, en español, sobre formato y calidad.',
-                'El flujo de formato compara el texto extraído contra la plantilla activa y los criterios de secciones que configura un administrador. El flujo de preguntas cruza el informe con una guía y marca qué ítems quedaron respondidos y con qué observaciones.',
-                'Moví la extracción de PDF y Word al navegador para mandar solo texto al servidor. La IA devuelve JSON con el reporte en Markdown y una nota de 0 a 100. Tuve que endurecer el parseo porque el modelo a veces envuelve la respuesta en fences.',
-                'Guardé cada análisis con metadatos académicos y filtros en el listado. Los roles separan lo que ve un docente de lo que ve un admin.'
+                'El flujo de formato compara el texto extraído con la plantilla activa y los criterios de secciones que configura un administrador.',
+                'El flujo de preguntas cruza el informe con una guía y marca qué ítems quedaron respondidos.',
+                'La extracción de PDF y Word ocurre en el navegador. Al servidor viaja solo el texto.',
+                'La IA devuelve JSON con el reporte en Markdown y una nota de 0 a 100. El parseo acepta respuestas envueltas en fences.',
+                'Cada análisis se guarda con metadatos académicos. Los roles separan lo que ve un docente de lo que ve un admin.'
             ],
             en: [
-                'I built LabReview so a teacher can upload a lab report and get an AI-assisted verdict, in Spanish, on format and quality.',
-                'The format flow compares the extracted text with the active template and the section criteria an administrator configures. The question flow crosses the report with a guide and marks which items were answered, and with what notes.',
-                'I moved PDF and Word extraction into the browser so the server only receives text. The model returns JSON with a Markdown report and a score from 0 to 100. I had to harden the parser because the model sometimes wraps the answer in fences.',
-                'I stored each analysis with academic metadata and filters on the list. Roles separate what a teacher sees from what an admin sees.'
+                'The format flow compares the extracted text with the active template and the section criteria an administrator configures.',
+                'The question flow crosses the report with a guide and marks which items were answered.',
+                'PDF and Word extraction happens in the browser. Only the text travels to the server.',
+                'The model returns JSON with a Markdown report and a score from 0 to 100. The parser accepts answers wrapped in fences.',
+                'Each analysis is stored with academic metadata. Roles separate what a teacher sees from what an admin sees.'
             ]
-        }
+        },
+        links: [
+            { kind: 'deploy', href: 'https://lab-report-navigator.vercel.app/' }
+        ]
     },
     recon: {
         kicker: 'RECON',
@@ -154,32 +247,38 @@ const projectDetails = {
             es: 'Redactar el reporte de convivencia con la Ley 1620 y el manual del colegio',
             en: 'Draft the coexistence report with Law 1620 and the school handbook'
         },
-        paragraphs: {
+        authors: [portfolioAuthor, { name: 'Edgardo Baena' }],
+        description: {
+            es: 'RECON redacta el reporte de convivencia de un colegio con la Ley 1620 y, si existe, el manual. El docente elige grado y alumno, escribe los hechos, y la función devuelve el tipo de falta, el artículo y un markdown con formato fijo.',
+            en: 'RECON drafts a school coexistence report with Law 1620 and, if it exists, the handbook. The teacher picks a grade and a student, writes the facts, and the function returns the type of offense, the article, and a markdown document with a fixed format.'
+        },
+        features: {
             es: [
-                'El producto se presenta como RECON. El README y la pantalla de pago dicen Docente Alerta. La carpeta del git es docente-alerta. Hace falta cuenta. Quien entra sin sesión cae en /welcome. El login general es para superadmin. El resto entra por el slug del colegio.',
-                'El docente elige grado y alumno, escribe los hechos y llama a generate-report. La función usa la Ley 1620 y, si existe, el manual del colegio. Devuelve tipo de falta, artículo y un markdown con formato fijo. El 31 de enero de 2026 quedaron los commits Mejoró generate-report IA e Integró Ley 1620 en prompt.',
-                'El 8 de marzo de 2026 se retiró school_settings. El manual pasó a colegios y el pago pasó a has_paid del colegio. Ese día el bot dejó RLS, roles y SuperAdmin. El hook useOfflineReports existe, pero las vistas de nuevo reporte e historial no lo usan. El guardado del formulario va a Supabase en línea.',
-                'Quien abre un link /share/:token no necesita cuenta. Puede leer y firmar. El director de grupo ve alerta a las 3 faltas leves, o ante una grave, o ante una gravísima. En git hay cuatro nombres: Lovable, gpt-engineer-app[bot], unknown y Edgardo Baena. 208 de 232 commits son del bot.'
+                'Hace falta cuenta. El login general es para superadmin. El resto entra por el slug del colegio.',
+                'Quien abre un enlace /share/:token no necesita cuenta: puede leer y firmar.',
+                'El director de grupo ve alerta a las 3 faltas leves, o ante una grave, o ante una gravísima.',
+                'El manual y el pago viven en la tabla del colegio. El formulario guarda en Supabase en línea.'
             ],
             en: [
-                'The product presents itself as RECON. The README and the payment screen say Docente Alerta. The git folder is docente-alerta. An account is required. A visitor without a session lands on /welcome. The general login is for superadmin. Everyone else enters through the school slug.',
-                'The teacher picks a grade and a student, writes the facts and calls generate-report. The function uses Law 1620 and, if it exists, the school handbook. It returns the type of offense, the article and a markdown document with a fixed format. On 31 January 2026 the commits Mejoró generate-report IA and Integró Ley 1620 en prompt landed.',
-                'On 8 March 2026 school_settings was removed. The handbook moved to colegios and payment moved to the school’s has_paid. That day the bot left RLS, roles and SuperAdmin. The useOfflineReports hook exists, but the new-report and history views do not use it. The form saves to Supabase online.',
-                'Someone who opens a /share/:token link does not need an account. They can read and sign. The homeroom director sees an alert at 3 minor offenses, or on a serious one, or on a very serious one. Git has four names: Lovable, gpt-engineer-app[bot], unknown and Edgardo Baena. 208 of 232 commits are the bot’s.'
+                'An account is required. The general login is for superadmin. Everyone else enters through the school slug.',
+                'Someone who opens a /share/:token link does not need an account: they can read and sign.',
+                'The homeroom director sees an alert at 3 minor offenses, or on a serious one, or on a very serious one.',
+                'The handbook and the payment live on the school table. The form saves to Supabase online.'
             ]
         },
         timeline: {
             es: [
                 '31 de enero de 2026. La función generate-report incorpora la Ley 1620.',
-                '8 de marzo de 2026. El manual y el pago pasan a la tabla del colegio.',
-                'Huecos sin commits: del 14 de febrero al 5 de marzo de 2026, y del 19 de marzo al 25 de mayo de 2026.'
+                '8 de marzo de 2026. El manual y el pago pasan a la tabla del colegio.'
             ],
             en: [
                 '31 January 2026. generate-report takes in Law 1620.',
-                '8 March 2026. The handbook and payment move to the school table.',
-                'Gaps with no commits: 14 February to 5 March 2026, and 19 March to 25 May 2026.'
+                '8 March 2026. The handbook and payment move to the school table.'
             ]
-        }
+        },
+        links: [
+            { kind: 'deploy', href: 'https://recon-xi.vercel.app/' }
+        ]
     },
     bauly: {
         kicker: 'Bauly',
@@ -187,22 +286,32 @@ const projectDetails = {
             es: 'Catalogar una colección con una foto y hablar con una IA de coleccionismo',
             en: 'Catalog a collection from a photo and talk to a collecting-aware AI'
         },
-        paragraphs: {
+        authors: [portfolioAuthor],
+        description: {
+            es: 'Entré cuando el proyecto todavía se llamaba Triasure AI. Lo renombré a Bauly, conecté el login con Google y dejé que una foto, o una pregunta de coleccionismo, armaran la ficha y la conversación.',
+            en: 'I joined when the project was still called Triasure AI. I renamed it Bauly, connected Google login, and let a photo, or a collecting question, build the catalog card and the conversation.'
+        },
+        features: {
             es: [
-                'Entré a este proyecto cuando todavía se llamaba Triasure AI. En mi primer commit lo renombré a Bauly y cambié los favicons y la paleta. Después conecté el login con Google: el botón llama a Supabase, la ruta de callback intercambia el código por sesión y, si el usuario es nuevo, crea su fila con el nombre y la foto de la cuenta.',
-                'Conecté el chat de la portada a Gemini para preguntas de coleccionismo. Más adelante construí la ruta que recibe una foto, la sube a Gemini y devuelve un JSON con los campos de catálogo según la categoría. Esa ruta vive en el servidor para no exponer la API key.',
-                'La mensajería privada fue la parte que más iteré. La primera versión era solo la burbuja, sin conexión. Al conectarla a Firestore el modelo cambió varias veces: el campo de participantes se renombró y la colección pasó de chats a ListChats. Los commits quedaron como “chat parece que ahora si” y “chat ahora si, de verdad que si”.',
-                'Construí el perfil de tienda, con banner, catálogo, filtros y un carrusel de ítems en tendencia. Después el sistema de subastas: listado, detalle con cuenta atrás, puja y creación. Para que dos pujas simultáneas no dejaran la subasta inconsistente, un trigger de Postgres solo actualiza la puja más alta si la nueva es estrictamente mayor, y la ruta del servidor repite esa validación.',
-                'El panel de administración verifica el rol, usa un cliente de Supabase con la llave de servicio para saltarse las políticas, y tiene migraciones para el baneo y el borrado en papelera de ítems en las trece tablas de categorías.'
+                'El login llama a Supabase. Si el usuario es nuevo, se crea su fila con el nombre y la foto de Google.',
+                'El chat de la portada responde con Gemini. Otra ruta recibe una foto y devuelve el JSON del catálogo desde el servidor, para no exponer la API key.',
+                'La mensajería privada quedó en Firestore, en la colección ListChats.',
+                'El perfil de tienda tiene banner, catálogo, filtros y un carrusel de ítems en tendencia.',
+                'Las subastas tienen listado, cuenta atrás, puja y creación. Un trigger de Postgres solo actualiza la puja si la nueva es estrictamente mayor.',
+                'El panel de administración verifica el rol, banea usuarios y manda ítems a la papelera en las trece tablas de categorías.'
             ],
             en: [
-                'I joined this project when it was still called Triasure AI. In my first commit I renamed it Bauly and changed the favicons and the palette. Then I connected Google login: the button calls Supabase, the callback route exchanges the code for a session and, if the user is new, creates their row with the name and photo from the account.',
-                'I connected the homepage chat to Gemini for collecting questions. Later I built the route that receives a photo, sends it to Gemini and returns JSON with catalog fields for the category. That route lives on the server so the API key stays off the browser.',
-                'Private messaging was the part I iterated most. The first version was only the bubble, with no connection. Once it was on Firestore the data model changed several times: the participants field was renamed and the collection went from chats to ListChats. The commits read “chat parece que ahora si” and “chat ahora si, de verdad que si”.',
-                'I built the shop profile, with a banner, catalog, filters and a carousel of trending items. Then the auction system: list, detail with a countdown, bidding and creation. So two simultaneous bids would not leave the auction inconsistent, a Postgres trigger only updates the highest bid if the new one is strictly higher, and the server route repeats that check.',
-                'The admin panel checks the role, uses a Supabase client with the service key to bypass the policies, and has migrations for bans and soft-deleting items across the thirteen category tables.'
+                'Login calls Supabase. If the user is new, their row is created with the name and photo from Google.',
+                'The homepage chat answers with Gemini. Another route receives a photo and returns the catalog JSON from the server, so the API key stays off the browser.',
+                'Private messaging landed in Firestore, in the ListChats collection.',
+                'The shop profile has a banner, a catalog, filters, and a carousel of trending items.',
+                'Auctions have a list, a countdown, bidding, and creation. A Postgres trigger updates the bid only if the new one is strictly higher.',
+                'The admin panel checks the role, bans users, and soft-deletes items across the thirteen category tables.'
             ]
-        }
+        },
+        links: [
+            { kind: 'deploy', href: 'https://bauly.co/' }
+        ]
     },
     stockup: {
         kicker: 'Stock up',
@@ -210,20 +319,23 @@ const projectDetails = {
             es: 'Qué hay en casa, qué se acabó y qué dice el ticket',
             en: 'What is at home, what ran out, and what the receipt says'
         },
-        paragraphs: {
+        authors: [portfolioAuthor],
+        description: {
+            es: 'StockUp lleva el inventario de las listas de compras de una casa. La portada entra con Google y, con sesión, abre el inventario. Una foto del ticket carga los productos.',
+            en: 'StockUp keeps the inventory of a household’s shopping lists. The homepage signs in with Google and, with a session, opens the inventory. A photo of the receipt loads the products.'
+        },
+        features: {
             es: [
-                'El sitio se llama StockUp. La portada dice que maneja listas de compras e inventario. Los términos del 17 de septiembre de 2025 hablan de inventario del hogar, listas, caducidad y recordatorios.',
-                'La portada entra con Google. El botón pide calendario, correo y perfil. Con sesión de Firebase la portada abre /protected. Sin sesión, /protected vuelve a la portada. Una lista es Personal o Grupo.',
-                'Cada artículo guarda nombre, cantidad, unidad, notas, precio y fecha. El interruptor en pantalla dice In stock y Out of stock. En el código el campo se llama inFridge. Si hay precio, la lista suma precio por cantidad y separa lo que está en stock de lo que no.',
-                'La foto del ticket va a Gemini 2.5 Flash. El modelo tiene que devolver nombre y precio. Si el precio no pasa de cero, ese producto no entra. Esos productos quedan con caducidad a un mes. Si hay token de calendario, el código crea un evento a un mes, de una hora, en America/Santiago.',
-                'El botón Nuevo recordatorio quedó comentado el 26 de septiembre de 2025, en el commit sin calendar. La ruta del formulario manual tiene el insert comentado. La ruta de la foto sigue creando el evento. El primer commit es el starter de Next.js y Supabase, del 2 de junio de 2025. En git hay 45 commits: 44 de sebastian y uno de Jsgallardo82. El layout cita stockup.vercel.app y la política de privacidad cita stockup-theta.vercel.app.'
+                'Cada artículo guarda nombre, cantidad, unidad, notas, precio y fecha. La lista suma precio por cantidad y separa lo que está en stock.',
+                'La foto del ticket va a Gemini 2.5 Flash. Si el precio no pasa de cero, ese producto no entra. La caducidad queda a un mes.',
+                'Si hay token de calendario, la foto crea un evento de una hora, a un mes, en America/Santiago.',
+                'El botón de recordatorio manual quedó comentado. La ruta de la foto sigue creando el evento.'
             ],
             en: [
-                'The site is called StockUp. The homepage says it handles shopping lists and inventory. The terms from 17 September 2025 talk about household inventory, lists, expiry and reminders.',
-                'The homepage signs in with Google. The button asks for calendar, email and profile. With a Firebase session the homepage opens /protected. Without a session, /protected returns to the homepage. A list is Personal or Group.',
-                'Each item stores name, quantity, unit, notes, price and date. The switch on screen says In stock and Out of stock. In the code the field is called inFridge. If there is a price, the list sums price times quantity and splits what is in stock from what is not.',
-                'The receipt photo goes to Gemini 2.5 Flash. The model has to return a name and a price. If the price is not above zero, that product does not enter. Those products get an expiry one month out. If there is a calendar token, the code creates a one-hour event one month ahead, in America/Santiago.',
-                'The New reminder button was commented out on 26 September 2025, in the commit sin calendar. The manual form route has the insert commented out. The photo route still creates the event. The first commit is the Next.js and Supabase starter, on 2 June 2025. Git has 45 commits: 44 by sebastian and one by Jsgallardo82. The layout cites stockup.vercel.app and the privacy policy cites stockup-theta.vercel.app.'
+                'Each item stores name, quantity, unit, notes, price, and date. The list sums price times quantity and splits what is in stock.',
+                'The receipt photo goes to Gemini 2.5 Flash. If the price is not above zero, that product does not enter. Expiry is set one month out.',
+                'If there is a calendar token, the photo creates a one-hour event one month ahead, in America/Santiago.',
+                'The manual reminder button was commented out. The photo route still creates the event.'
             ]
         },
         timeline: {
@@ -237,7 +349,10 @@ const projectDetails = {
                 '17 September 2025. Household inventory terms.',
                 '26 September 2025. The manual reminder is commented out. The receipt photo still creates the event.'
             ]
-        }
+        },
+        links: [
+            { kind: 'deploy', href: 'https://stockup-theta.vercel.app/' }
+        ]
     },
     mantix: {
         kicker: 'Mantix',
@@ -245,18 +360,28 @@ const projectDetails = {
             es: 'Saber qué equipo industrial ya se pasó de la fecha de mantenimiento',
             en: 'See which industrial asset is already past its maintenance date'
         },
-        paragraphs: {
+        authors: [
+            portfolioAuthor,
+            { name: 'Gabriel Landinez' },
+            { name: 'Luis' },
+            { name: 'Javier Patin' }
+        ],
+        description: {
+            es: 'Mantix muestra qué equipo industrial ya se pasó de la fecha de mantenimiento. El panel parte los activos por ubicación, y el técnico abre el que corresponde a su planta. En mis commits están la estructura, las tarjetas, el enrutado de fases y la descarga del PDF.',
+            en: 'Mantix shows which industrial asset is already past its maintenance date. The panel splits assets by location, and the technician opens the one that matches their plant. My commits cover the structure, the cards, the phase routing, and the PDF download.'
+        },
+        features: {
             es: [
-                'Mantix es el nombre de la portada. El panel parte los activos por ubicación. Si la fecha de proximo_mto ya pasó, o no hay fecha, cuenta como fuera de tiempo. Si faltan 30 días o menos, cuenta como próximo. Si faltan más, cuenta como al día.',
-                'En mis commits están la estructura inicial, las tarjetas de fases y activos, el enrutado dinámico, el mapeo de fases, el arreglo del hook, el formato del PDF y el botón de descarga del 23 de julio de 2025. El PDF clona la página, le mete CSS y la baja con html2pdf.js.',
-                'La tarjeta de mantenimientos completados dice «Último mes». El número es el total con estado completed, sin cortar por fecha. La fecha del próximo mantenimiento en esa pantalla está escrita a mano: 2025-06-30. El gráfico de los seis meses sí lee completed_at.',
-                'El trabajo no fue solo mío. En git aparecen también Gabriel Landinez, Luis, Javier Patin y un autor unknown. El último commit, del 25 de enero de 2026, firma unknown y dice “reviviendo a mantix”.'
+                'Si proximo_mto ya pasó, o no hay fecha, el activo cuenta como fuera de tiempo. Si faltan 30 días o menos, cuenta como próximo.',
+                'El PDF de la orden clona la página y la baja con html2pdf.js.',
+                'La tarjeta de mantenimientos completados dice «Último mes» y muestra el total con estado completed, sin cortar por fecha.',
+                'La fecha del próximo mantenimiento en esa pantalla está escrita a mano: 2025-06-30. El gráfico de seis meses sí lee completed_at.'
             ],
             en: [
-                'Mantix is the name on the homepage. The panel splits assets by location. If proximo_mto is already past, or there is no date, it counts as overdue. If 30 days or fewer remain, it counts as upcoming. If more remain, it counts as on time.',
-                'My commits cover the initial structure, the phase and asset cards, the dynamic routing, the phase mapping, the hook fix, the PDF layout and the download button from 23 July 2025. The PDF clones the page, injects CSS and downloads it with html2pdf.js.',
-                'The completed-maintenance card says “Last month”. The number is the total with status completed, with no date cut. The next maintenance date on that screen is written by hand: 2025-06-30. The six-month chart does read completed_at.',
-                'The work was not only mine. Git also shows Gabriel Landinez, Luis, Javier Patin and an author named unknown. The last commit, on 25 January 2026, is signed unknown and says “reviviendo a mantix”.'
+                'If proximo_mto is already past, or there is no date, the asset counts as overdue. If 30 days or fewer remain, it counts as upcoming.',
+                'The order PDF clones the page and downloads it with html2pdf.js.',
+                'The completed-maintenance card says “Last month” and shows the total with status completed, with no date cut.',
+                'The next maintenance date on that screen is written by hand: 2025-06-30. The six-month chart does read completed_at.'
             ]
         },
         timeline: {
@@ -267,10 +392,13 @@ const projectDetails = {
             ],
             en: [
                 '8 May 2025. The repo starts from Vercel.',
-                '9 to 12 May 2025. Structure, cards and phase routing.',
+                '9 to 12 May 2025. Structure, cards, and phase routing.',
                 '12 June and 23 July 2025. PDF layout and the download button.'
             ]
-        }
+        },
+        links: [
+            { kind: 'deploy', href: 'https://mantix.vercel.app/' }
+        ]
     },
     frog: {
         kicker: 'Frog Board',
@@ -278,18 +406,23 @@ const projectDetails = {
             es: 'Quién de la casa está en casa, y qué misión tiene',
             en: 'Who in the house is home, and what mission they have'
         },
-        paragraphs: {
+        authors: [portfolioAuthor],
+        description: {
+            es: 'Frog Board muestra quién de la casa está en casa y qué misión tiene. Una persona se registra, verifica el correo y entra al panel. Si no tiene hogar, crea uno o se une con un código.',
+            en: 'Frog Board shows who in the house is home and what mission they have. A person registers, verifies their email, and lands on the board. If they have no household, they create one or join with a code.'
+        },
+        features: {
             es: [
-                'El proyecto se presenta como Frog Board. La carpeta se llama jiraiya-s-family-board. Una persona se registra con nombre, correo y contraseña. La pantalla le pide verificar el correo. Luego entra al panel. Si no tiene hogar, el texto le dice que cree uno o que se una con un código.',
-                'Cada miembro del hogar activo tiene una tablilla. El estado es en casa o fuera. Solo se puede voltear la tablilla propia. El panel escucha los cambios de household_members. Las misiones son personales o asignadas, con prioridad baja, media o alta.',
-                'El primer intento de aviso, el 17 de febrero de 2026, metió una ruta de Next.js en un proyecto Vite. Otra ruta solo escribía el aviso en el log. Esas dos, y notifications-fixed.ts, se borraron el 2 de marzo. La función SQL sigue devolviendo verdadero sin enviar nada. El envío que queda está en la función Deno con web-push, retocada el 6 y el 16 de marzo.',
-                'El 9 de febrero el hogar era una columna en el perfil. El 16 de marzo pasó a la tabla household_members. Seis commits figuran como unknown.'
+                'Cada miembro tiene una tablilla: en casa o fuera. Solo se puede voltear la propia.',
+                'Las misiones son personales o asignadas, con prioridad baja, media o alta.',
+                'El aviso que quedó envía con web-push desde una función Deno. La función SQL devuelve verdadero sin enviar nada.',
+                'El hogar pasó de una columna del perfil a la tabla household_members.'
             ],
             en: [
-                'The project presents itself as Frog Board. The folder is called jiraiya-s-family-board. A person registers with a name, email and password. The screen asks them to verify the email. Then they land on the board. If they have no household, the text tells them to create one or join with a code.',
-                'Each member of the active household has a tile. The state is home or away. Only your own tile can be flipped. The board listens to changes on household_members. Missions are personal or assigned, with low, medium or high priority.',
-                'The first notification attempt, on 17 February 2026, put a Next.js route inside a Vite project. Another route only wrote the notice to the log. Those two, and notifications-fixed.ts, were deleted on 2 March. The SQL function still returns true without sending anything. The send that remains is in the Deno function with web-push, touched again on 6 and 16 March.',
-                'On 9 February the household was a column on the profile. On 16 March it moved to the household_members table. Six commits are signed unknown.'
+                'Each member has a tile: home or away. Only your own tile can be flipped.',
+                'Missions are personal or assigned, with low, medium, or high priority.',
+                'The notification that remains sends with web-push from a Deno function. The SQL function returns true without sending anything.',
+                'The household moved from a column on the profile to the household_members table.'
             ]
         },
         timeline: {
@@ -305,101 +438,10 @@ const projectDetails = {
                 '2 March 2026. Those routes are deleted.',
                 '16 March 2026. The household moves to household_members.'
             ]
-        }
-    },
-    lissajous: {
-        kicker: 'Figuras de Lissajous',
-        title: {
-            es: 'Ver qué curva cierran dos senos, y cuándo el dibujo se corta',
-            en: 'See which curve two sines close, and when the drawing stops'
         },
-        paragraphs: {
-            es: [
-                'Se abre con index.html. El README dice que no hace falta instalar nada. No hay cuenta. La curva sale de dos senos: x = A·sin(a·t + δ) e y = B·sin(b·t). Sin un estado guardado, el código arranca en a = 3, b = 2 y δ = 90°. Hay diez figuras listas, del círculo 1:1 al 7:11.',
-                'El punto que el código explica es el cierre. En cierre redondeo a y b a tres decimales. Las vueltas salen del máximo común divisor. Si pasan de 100, el dibujo se corta y el HUD dice que no se cierra.',
-                'Girar δ suma grados por segundo. Trazar recorre la curva en los segundos elegidos y marca el punto con las dos proyecciones. Guardar PNG dibuja la curva completa a 1080, 2048 o 4096 px. El nombre del archivo lleva a, b y δ.',
-                'Hay un solo commit, del 29 de octubre de 2026. El autor en git es sebastian. El mensaje también nombra a Claude Opus 5.5. Entran cuatro archivos y 716 líneas.'
-            ],
-            en: [
-                'It opens with index.html. The README says nothing needs to be installed. There is no account. The curve comes from two sines: x = A·sin(a·t + δ) and y = B·sin(b·t). With no saved state, the code starts at a = 3, b = 2 and δ = 90°. There are ten ready figures, from the 1:1 circle to 7:11.',
-                'The point the code explains is closure. In cierre I round a and b to three decimals. The turns come from the greatest common divisor. If they pass 100, the drawing stops and the HUD says it does not close.',
-                'Turning δ adds degrees per second. Trace walks the curve in the chosen seconds and marks the point with both projections. Save PNG draws the full curve at 1080, 2048 or 4096 px. The file name carries a, b and δ.',
-                'There is a single commit, on 29 October 2026. The git author is sebastian. The message also names Claude Opus 5.5. Four files and 716 lines go in.'
-            ]
-        }
-    },
-    modular: {
-        kicker: 'Circunferencia modular',
-        title: {
-            es: 'Qué figura sale al unir cada punto i con (i · m) mod N',
-            en: 'What figure appears when each point i joins (i · m) mod N'
-        },
-        paragraphs: {
-            es: [
-                'Se abre con index.html. No hay instalación ni cuenta. Hay N puntos en un círculo. Uno el punto i con (i · m) mod N. Con m = 2 el recuadro dice cardioide. Con m = 3 dice nefroide. Si m es entero, vale al menos 2 y es menor que N/2, el recuadro dice m − 1 lóbulos.',
-                'm admite decimales. En app.js el ángulo no se redondea al punto más cercano. El comentario dice que así el decimal se ve suave. m se recorta a seis decimales para no arrastrar un error como 2.0000000001.',
-                'Cada cuerda se dibuja sola. El comentario dice que la opacidad se suma en los cruces y por eso brilla la envolvente. Los puntos solo se pintan si N es como mucho 2000. Los números, si N es como mucho 100.',
-                'El README dice que dos m iguales módulo N dibujan la misma figura. También si su producto es 1 módulo N. Para m de 2 a 28, el menor N sin figuras repetidas es 48. Hay un solo commit, del 29 de octubre de 2026. El autor en git es sebastian y el mensaje nombra también a Claude Opus 5.5.'
-            ],
-            en: [
-                'It opens with index.html. There is no install and no account. There are N points on a circle. Point i is joined to (i · m) mod N. With m = 2 the box says cardioid. With m = 3 it says nephroid. If m is an integer, at least 2 and less than N/2, the box says m − 1 lobes.',
-                'm accepts decimals. In app.js the angle is not rounded to the nearest point. The comment says that is how the decimal looks smooth. m is cut to six decimals so an error like 2.0000000001 does not stick.',
-                'Each chord is drawn on its own. The comment says opacity adds up at the crossings, which is why the envelope glows. Points are painted only if N is at most 2000. Numbers, only if N is at most 100.',
-                'The README says two values of m that are equal modulo N draw the same figure. Also if their product is 1 modulo N. For m from 2 to 28, the smallest N without repeated figures is 48. There is a single commit, on 29 October 2026. The git author is sebastian and the message also names Claude Opus 5.5.'
-            ]
-        }
-    },
-    punto: {
-        kicker: 'Punto y fama',
-        title: {
-            es: 'Adivinar cuatro dígitos distintos y saber cuántos están en su sitio',
-            en: 'Guess four different digits and learn how many sit in the right place'
-        },
-        paragraphs: {
-            es: [
-                'El juego se llama Punto y Fama. Abrir el programa muestra una ventana de Tkinter. No hay cuenta. Se escriben cuatro números separados por comas y se pulsa Jugar, o Enter.',
-                'La partida esconde cuatro dígitos distintos del 0 al 9. Hay 10 intentos. Fama cuenta un dígito en la posición correcta. Punto cuenta un dígito correcto en otra posición. Un acierto de posición no suma punto. Al ganar o al quedarse sin intentos, el programa muestra la secuencia.',
-                'El mismo juego está en puntoyfama.py y en puntoyfama.ipynb. El script aún tiene marcas de celda de Jupyter. El notebook fija Python 3.10.10. puntoyfama.spec prepara un ejecutable con PyInstaller. Ese ejecutable no está en el repo.',
-                'Hay una sola fecha en git: 6 de octubre de 2025. El autor del commit es sebastian.'
-            ],
-            en: [
-                'The game is called Punto y Fama. Opening the program shows a Tkinter window. There is no account. You type four numbers separated by commas and press Jugar, or Enter.',
-                'The round hides four different digits from 0 to 9. There are 10 tries. Fama counts a digit in the correct position. Punto counts a correct digit in another position. A position hit does not also add a punto. On a win, or when the tries run out, the program shows the sequence.',
-                'The same game lives in puntoyfama.py and puntoyfama.ipynb. The script still has Jupyter cell marks. The notebook pins Python 3.10.10. puntoyfama.spec prepares a PyInstaller executable. That executable is not in the repo.',
-                'Git has a single date: 6 October 2025. The commit author is sebastian.'
-            ]
-        }
-    },
-    ahorcado: {
-        kicker: 'Ahorcado Siglo XXXI',
-        title: {
-            es: '¿La letra y la posición alcanzan antes de que el ácido llene la cápsula?',
-            en: 'Do the letter and the position land before the acid fills the capsule?'
-        },
-        paragraphs: {
-            es: [
-                'El 17 de abril de 2025 el primer commit creó el repo con Create Next App. El autor que figura en git es Juan Gallardo. El 26 de abril el segundo commit, “maquina realizada”, cambió la portada y metió las dos partidas. No hay commits entre esas dos fechas.',
-                'La portada pone al jugador como abogado de un amigo condenado a morir en ácido. No hay cuenta. Hay dos botones: Contra máquina y Contra persona. Empezar sortea una cadena de una lista de 25. El jugador escribe una posición y pulsa una letra. Hay 27 letras, de la A a la Z más la Ñ.',
-                'Si la letra coincide en esa posición, el código rellena todas las apariciones de esa letra. Si la letra está en la palabra y la posición no, el historial lo anota y el ácido no crece. Si la letra no está, el ácido usa letrasIncorrectas / 6. La victoria compara la solución pegada con la palabra en mayúsculas.',
-                'La ruta contra persona repite la lista y el botón Empezar de la máquina. El título de esa página dice “V.S. Maquina”. El estado palabraIngresada no se pinta. Next.js está fijado en 15.3.1, React en 19 y styled-components en 6.1.17. El paquete npm se llama ahorcado_siglo_futuro.'
-            ],
-            en: [
-                'On 17 April 2025 the first commit created the repo with Create Next App. The git author is Juan Gallardo. On 26 April the second commit, “maquina realizada”, changed the cover and added both games. There are no commits between those two dates.',
-                'The cover casts the player as the lawyer of a friend sentenced to die in acid. There is no account. There are two buttons: against the machine and against a person. Start draws a string from a list of 25. The player types a position and presses a letter. There are 27 letters, A to Z plus Ñ.',
-                'If the letter matches that position, the code fills every occurrence of that letter. If the letter is in the word and the position is not, the history notes it and the acid does not rise. If the letter is absent, the acid uses letrasIncorrectas / 6. Victory compares the joined solution with the word in capitals.',
-                'The against-person route repeats the machine’s list and Start button. That page’s title says “V.S. Maquina”. The palabraIngresada state is never painted. Next.js is pinned at 15.3.1, React at 19 and styled-components at 6.1.17. The npm package is named ahorcado_siglo_futuro.'
-            ]
-        },
-        timeline: {
-            es: [
-                '17 de abril de 2025. Initial commit from Create Next App.',
-                '26 de abril de 2025. Portada y las dos partidas.'
-            ],
-            en: [
-                '17 April 2025. Initial commit from Create Next App.',
-                '26 April 2025. Cover and both games.'
-            ]
-        }
+        links: [
+            { kind: 'deploy', href: 'https://jiraiya-s-family-board.vercel.app/' }
+        ]
     },
     techcaribe: {
         kicker: 'TechCaribe',
@@ -407,18 +449,25 @@ const projectDetails = {
             es: 'Filtrar la agenda del Tech Caribe Fest por salón',
             en: 'Filter the Tech Caribe Fest agenda by room'
         },
-        paragraphs: {
+        authors: [portfolioAuthor],
+        description: {
+            es: 'En el sitio de TechCaribe armé la agenda del fest y de la ruta. En la portada hay dos tarjetas: la ruta del 8 al 19 de septiembre y el fest el 20 de septiembre, en la plaza de la paz. No hace falta cuenta para verlas.',
+            en: 'On the TechCaribe site I built the fest and route agendas. The homepage has two cards: the route from 8 to 19 September and the fest on 20 September, at Plaza de la Paz. No account is needed to see them.'
+        },
+        features: {
             es: [
-                'Entré al sitio de TechCaribe entre el 7 y el 23 de septiembre de 2025. Armé /fest y /ruta-tech-caribe. En la portada dejé dos tarjetas. La ruta dice del 8 al 19 de septiembre. El fest dice 20 de septiembre, en la plaza de la paz. No hace falta una cuenta para verlas.',
-                'El cronograma salió del componente y quedó en JSON. El 8 de septiembre ordené cada lista con la hora de inicio. La función lee la primera hora de la cadena y distingue AM de PM. Las 12:00 PM quedan en 0 minutos. Esa cadena está en la agenda 2024. En la agenda 2025 no hay una actividad que empiece a las 12.',
-                'El mismo día mostré las subzonas. El primer clic no filtraba. El commit siguiente filtra por el nombre de la subzona. La zona developer tiene seis salones y 20 actividades. Si el filtro deja la lista vacía, la pantalla dice que no hay eventos para esa subzona.',
-                'El 18 de septiembre monté el carrusel de experiencias. Son cuatro. El carrusel usa Swiper, que ya estaba en el proyecto. Al cerrar patrocinadores el archivo tenía 2 de platino, 6 de oro, 2 de plata, 9 de bronce y 31 aliados. Antes de mi primer cambio había 5 patrocinadores y 4 aliados. Cambié 12 notas de 2024 por 9 del fest y pasé las fotos a WebP. En el registro dejé solo el rol participante. El 23 de septiembre comenté el botón Quiero asistir del hero.'
+                'El cronograma vive en JSON y cada lista se ordena por la hora de inicio, distinguiendo AM de PM.',
+                'El filtro de subzona deja ver un salón. La zona developer tiene seis salones y 20 actividades. Si la lista queda vacía, la pantalla lo dice.',
+                'El carrusel de experiencias muestra cuatro. Usa Swiper, que ya estaba en el proyecto.',
+                'Al cerrar patrocinadores había 2 de platino, 6 de oro, 2 de plata, 9 de bronce y 31 aliados. Las fotos de prensa pasaron a WebP.',
+                'En el registro quedó solo el rol participante.'
             ],
             en: [
-                'I joined the TechCaribe site between 7 and 23 September 2025. I built /fest and /ruta-tech-caribe. On the homepage I left two cards. The route says 8 to 19 September. The fest says 20 September, at Plaza de la Paz. No account is needed to see them.',
-                'The schedule left the component and landed in JSON. On 8 September I sorted each list by start time. The function reads the first hour in the string and tells AM from PM. 12:00 PM lands at 0 minutes. That string is in the 2024 agenda. The 2025 agenda has no activity starting at 12.',
-                'The same day I showed the subzones. The first click did not filter. The next commit filters by the subzone name. The developer zone has six rooms and 20 activities. If the filter leaves the list empty, the screen says there are no events for that subzone.',
-                'On 18 September I built the experiences carousel. There are four. The carousel uses Swiper, which was already in the project. When I closed sponsors the file had 2 platinum, 6 gold, 2 silver, 9 bronze and 31 allies. Before my first change there were 5 sponsors and 4 allies. I replaced 12 notes from 2024 with 9 from the fest and moved the photos to WebP. In registration I left only the participant role. On 23 September I commented out the I want to attend button on the hero.'
+                'The schedule lives in JSON and each list is sorted by start time, telling AM from PM.',
+                'The subzone filter shows one room. The developer zone has six rooms and 20 activities. If the list is empty, the screen says so.',
+                'The experiences carousel shows four. It uses Swiper, which was already in the project.',
+                'When sponsors were closed there were 2 platinum, 6 gold, 2 silver, 9 bronze, and 31 allies. Press photos moved to WebP.',
+                'Registration kept only the participant role.'
             ]
         },
         timeline: {
@@ -434,7 +483,10 @@ const projectDetails = {
                 '18 September 2025. Four-experience carousel and photos in WebP.',
                 '23 September 2025. The I want to attend button is commented out.'
             ]
-        }
+        },
+        links: [
+            { kind: 'deploy', href: 'https://www.techcaribe.co' }
+        ]
     },
     juancho: {
         kicker: 'Juancho Restrepo',
@@ -442,16 +494,23 @@ const projectDetails = {
             es: 'Administrar galería, blogs y noticias desde el propio sitio',
             en: 'Manage the gallery, blogs and news from the site itself'
         },
-        paragraphs: {
+        authors: [portfolioAuthor],
+        description: {
+            es: 'El sitio de Juancho Restrepo muestra la campaña y, con sesión, deja administrar la galería, los blogs y las noticias sin salir de la página.',
+            en: 'The Juancho Restrepo site shows the campaign and, with a session, lets the gallery, blogs, and news be managed without leaving the page.'
+        },
+        features: {
             es: [
-                'Monté el sitio en React, Vite, TypeScript y Tailwind. Primero salieron header, footer, hero, contacto y un carrusel con posts de muestra. El 12 de diciembre armé las rutas /, /sobre-mi, /proyectos y /galeria. Galería y proyectos salieron del Miro. Después ajusté el layout a móvil.',
-                'El 18 de diciembre enganché Supabase. El header abre un modal de login y escucha la sesión. Al día siguiente el hero y el sidebar leen main_info. El formulario de contacto inserta en contactos. La galería lista el bucket website_assets/gallery. El home y proyectos leen blogs. Noticias lee notices. Los arrays de ejemplo quedaron comentados.',
-                'El 22 de diciembre, si hay sesión, Galería muestra “editar galería”. Ahí se suben o borran archivos. En el mismo commit quité el registro público del modal. En proyectos, “editar blogs” crea, actualiza o borra filas y sube la imagen a website_assets/blogs. En sobre mí, “Editar noticias” hace lo mismo con notices. El autor del blog o la noticia se guarda con user.id. El home muestra dos blogs, con slice(0, 2).'
+                'Las rutas son /, /sobre-mi, /proyectos y /galeria.',
+                'El header abre el login de Supabase. Sin sesión no aparecen los botones de edición, y el registro público salió del modal.',
+                'Galería sube y borra archivos en website_assets/gallery. Blogs y noticias crean, actualizan o borran filas y suben la imagen a Storage.',
+                'El autor se guarda con user.id. El home muestra dos blogs.'
             ],
             en: [
-                'I built the site in React, Vite, TypeScript and Tailwind. Header, footer, hero, contact and a carousel of sample posts came first. On 12 December I set up the routes /, /sobre-mi, /proyectos and /galeria. Gallery and projects came from the Miro. Then I adjusted the layout for mobile.',
-                'On 18 December I hooked up Supabase. The header opens a login modal and listens to the session. The next day the hero and the sidebar read main_info. The contact form inserts into contactos. The gallery lists the website_assets/gallery bucket. Home and projects read blogs. News reads notices. The sample arrays were left commented out.',
-                'On 22 December, if there is a session, Gallery shows “edit gallery”. Files are uploaded or deleted there. In the same commit I removed public signup from the modal. On projects, “edit blogs” creates, updates or deletes rows and uploads the image to website_assets/blogs. On about, “Edit news” does the same with notices. The blog or news author is stored as user.id. Home shows two blogs, with slice(0, 2).'
+                'The routes are /, /sobre-mi, /proyectos, and /galeria.',
+                'The header opens the Supabase login. Without a session the edit buttons stay hidden, and public signup left the modal.',
+                'Gallery uploads and deletes files in website_assets/gallery. Blogs and news create, update, or delete rows and upload the image to Storage.',
+                'The author is stored as user.id. Home shows two blogs.'
             ]
         },
         timeline: {
@@ -462,12 +521,16 @@ const projectDetails = {
                 '22 de diciembre de 2025. Edición de galería, blogs y noticias. El registro público sale del modal.'
             ],
             en: [
-                '12 December 2025. Routes, gallery and projects.',
+                '12 December 2025. Routes, gallery, and projects.',
                 '18 December 2025. Supabase login.',
-                '19 December 2025. Gallery, blogs and news read the database.',
-                '22 December 2025. Editing for gallery, blogs and news. Public signup leaves the modal.'
+                '19 December 2025. Gallery, blogs, and news read the database.',
+                '22 December 2025. Editing for gallery, blogs, and news. Public signup leaves the modal.'
             ]
-        }
+        },
+        links: [
+            { kind: 'repo', href: 'https://github.com/code-centre/Web-Site-Juancho' },
+            { kind: 'deploy', href: 'https://code-centre.github.io/Web-Site-Juancho' }
+        ]
     },
     tecnocons: {
         kicker: 'Tecnocons',
@@ -475,21 +538,164 @@ const projectDetails = {
             es: 'Convertir el chat web en leads, mientras el agente busca proyectos y manda fotos',
             en: 'Turn the web chat into leads while the agent looks up projects and sends photos'
         },
-        paragraphs: {
+        authors: [portfolioAuthor],
+        description: {
+            es: 'El backend convierte el chat web de una inmobiliaria en leads de Supabase. El asistente se llama Valeria Torres en el prompt: pide los datos, busca proyectos y manda fotos o brochure solo si la persona confirma. El front del CRM no vive en este repositorio.',
+            en: 'The backend turns a real-estate company’s web chat into Supabase leads. The assistant is named Valeria Torres in the prompt: it asks for the data, looks up projects, and sends photos or a brochure only if the person confirms. The CRM front end does not live in this repository.'
+        },
+        features: {
             es: [
-                'Construí un backend de chat para una inmobiliaria que ya tenía Supabase y un CRM en Vite. El front no vive en este repositorio. Aquí está el agente, el API y la lógica que escribe en la tabla leads.',
-                'El asistente público se llama Valeria Torres en el prompt. Debe capturar datos del prospecto mientras conversa, buscar proyectos en la base, y mandar fotos o brochure solo si la persona confirma.',
-                'El problema que más me costó fue la persistencia progresiva. El modelo a veces respondía bien en texto y el CRM seguía con placeholders. Añadí captura desde las tools del ADK, parseo de respuestas, heurísticas sobre el mensaje del usuario y estado acumulado por sesión antes de hacer PATCH a PostgREST.',
-                'Reemplacé el cliente pesado de Supabase por httpx directo a PostgREST y Storage. Separé un agente interno que consulta leads cuando llega un JWT de empleado, distinto del flujo del visitante anónimo. Las fotos salen como URLs firmadas en el campo attachments. El brochure devuelve brochure_url.',
-                'Los 11 commits revisados figuran en git con el autor unknown. Con eso no se puede saber, desde el historial, si el trabajo fue de una sola persona.'
+                'La captura sale de las tools del agente, del texto de la respuesta, de heurísticas sobre el mensaje y del estado de la sesión, y después hace PATCH a PostgREST.',
+                'El cliente de Supabase quedó reemplazado por httpx directo a PostgREST y Storage.',
+                'Un agente interno consulta leads cuando llega un JWT de empleado. El visitante anónimo sigue otro flujo.',
+                'Las fotos salen como URLs firmadas en attachments. El brochure devuelve brochure_url.'
             ],
             en: [
-                'I built a chat backend for a real-estate company that already had Supabase and a CRM in Vite. The front end does not live in this repository. Here are the agent, the API and the logic that writes the leads table.',
-                'The public assistant is named Valeria Torres in the prompt. It has to capture the prospect’s data while talking, look up projects in the database, and send photos or a brochure only if the person confirms.',
-                'The problem that cost me the most was progressive persistence. The model sometimes answered well in text while the CRM stayed on placeholders. I added capture from the ADK tools, response parsing, heuristics on the user message and accumulated session state before the PATCH to PostgREST.',
-                'I replaced the heavy Supabase client with httpx straight to PostgREST and Storage. I split off an internal agent that queries leads when an employee JWT arrives, separate from the anonymous visitor flow. Photos go out as signed URLs in the attachments field. The brochure returns brochure_url.',
-                'The 11 reviewed commits are signed unknown in git. From the history alone, that does not show whether the work was one person’s.'
+                'Capture comes from the agent tools, the reply text, heuristics on the message, and the session state, and then it PATCHes PostgREST.',
+                'The Supabase client was replaced by httpx straight to PostgREST and Storage.',
+                'An internal agent queries leads when an employee JWT arrives. The anonymous visitor follows a different flow.',
+                'Photos go out as signed URLs in attachments. The brochure returns brochure_url.'
             ]
-        }
+        },
+        links: []
+    },
+    lissajous: {
+        kicker: 'Figuras de Lissajous',
+        title: {
+            es: 'Ver qué curva cierran dos senos, y cuándo el dibujo se corta',
+            en: 'See which curve two sines close, and when the drawing stops'
+        },
+        authors: [portfolioAuthor],
+        description: {
+            es: 'El visualizador abre curvas de Lissajous en el navegador, sin instalación y sin cuenta. Dos senos arman la figura, y el código dice cuándo el dibujo se cierra y cuándo se corta.',
+            en: 'The visualizer opens Lissajous curves in the browser, with no install and no account. Two sines build the figure, and the code says when the drawing closes and when it stops.'
+        },
+        features: {
+            es: [
+                'Sin un estado guardado arranca en a = 3, b = 2 y δ = 90°. Hay diez figuras listas, del círculo 1:1 al 7:11.',
+                'El cierre redondea a y b a tres decimales. Si las vueltas pasan de 100, el dibujo se corta.',
+                'Girar δ suma grados por segundo. Trazar recorre la curva y marca el punto con las dos proyecciones.',
+                'Guardar PNG dibuja la curva a 1080, 2048 o 4096 px.'
+            ],
+            en: [
+                'With no saved state it starts at a = 3, b = 2, and δ = 90°. There are ten ready figures, from the 1:1 circle to 7:11.',
+                'Closure rounds a and b to three decimals. If the turns pass 100, the drawing stops.',
+                'Turning δ adds degrees per second. Trace walks the curve and marks the point with both projections.',
+                'Save PNG draws the curve at 1080, 2048, or 4096 px.'
+            ]
+        },
+        timeline: {
+            es: ['29 de octubre de 2026. Un commit, cuatro archivos y 716 líneas.'],
+            en: ['29 October 2026. One commit, four files, and 716 lines.']
+        },
+        links: [
+            { kind: 'repo', href: 'https://github.com/Jsgallardo82/figuras-lissajous' }
+        ]
+    },
+    modular: {
+        kicker: 'Circunferencia modular',
+        title: {
+            es: 'Qué figura sale al unir cada punto i con (i · m) mod N',
+            en: 'What figure appears when each point i joins (i · m) mod N'
+        },
+        authors: [portfolioAuthor],
+        description: {
+            es: 'El visualizador pone N puntos en un círculo y une cada punto i con (i · m) mod N. Se abre con index.html, sin instalación y sin cuenta.',
+            en: 'The visualizer places N points on a circle and joins each point i to (i · m) mod N. It opens with index.html, with no install and no account.'
+        },
+        features: {
+            es: [
+                'Con m = 2 la figura es una cardioide. Con m = 3, una nefroide. Si m es entero y cabe en el rango, el recuadro dice m − 1 lóbulos.',
+                'm admite decimales. El ángulo no se redondea al punto más cercano, y m se recorta a seis decimales.',
+                'Cada cuerda se dibuja sola, y la opacidad se suma en los cruces.',
+                'Los puntos se pintan si N es como mucho 2000. Los números, si N es como mucho 100.'
+            ],
+            en: [
+                'With m = 2 the figure is a cardioid. With m = 3, a nephroid. If m is an integer and fits the range, the box says m − 1 lobes.',
+                'm accepts decimals. The angle is not rounded to the nearest point, and m is cut to six decimals.',
+                'Each chord is drawn on its own, and opacity adds up at the crossings.',
+                'Points are painted if N is at most 2000. Numbers, if N is at most 100.'
+            ]
+        },
+        timeline: {
+            es: ['29 de octubre de 2026. Un solo commit.'],
+            en: ['29 October 2026. A single commit.']
+        },
+        links: [
+            { kind: 'repo', href: 'https://github.com/Jsgallardo82/circunferencia-modular' }
+        ]
+    },
+    punto: {
+        kicker: 'Punto y fama',
+        title: {
+            es: 'Adivinar cuatro dígitos distintos y saber cuántos están en su sitio',
+            en: 'Guess four different digits and learn how many sit in the right place'
+        },
+        authors: [portfolioAuthor],
+        description: {
+            es: 'Punto y Fama esconde cuatro dígitos distintos y dice, en cada intento, cuántos están en su sitio. Se abre en una ventana de Tkinter, sin cuenta.',
+            en: 'Punto y Fama hides four different digits and, on each try, says how many sit in the right place. It opens in a Tkinter window, with no account.'
+        },
+        features: {
+            es: [
+                'Se escriben cuatro números separados por comas y se pulsa Jugar, o Enter. Hay 10 intentos.',
+                'Fama cuenta un dígito en la posición correcta. Punto cuenta un dígito correcto en otra posición. Un acierto de posición no suma punto.',
+                'Al ganar o al quedarse sin intentos, el programa muestra la secuencia.',
+                'El mismo juego está en el script y en el notebook. El spec prepara un ejecutable con PyInstaller.'
+            ],
+            en: [
+                'You type four numbers separated by commas and press Jugar, or Enter. There are 10 tries.',
+                'Fama counts a digit in the correct position. Punto counts a correct digit in another position. A position hit does not also add a punto.',
+                'On a win, or when the tries run out, the program shows the sequence.',
+                'The same game lives in the script and in the notebook. The spec prepares a PyInstaller executable.'
+            ]
+        },
+        timeline: {
+            es: ['6 de octubre de 2025. Un solo commit.'],
+            en: ['6 October 2025. A single commit.']
+        },
+        links: [
+            { kind: 'repo', href: 'https://github.com/Jsgallardo82/puntoyfama' }
+        ]
+    },
+    ahorcado: {
+        kicker: 'Ahorcado Siglo XXXI',
+        title: {
+            es: '¿La letra y la posición alcanzan antes de que el ácido llene la cápsula?',
+            en: 'Do the letter and the position land before the acid fills the capsule?'
+        },
+        authors: [portfolioAuthor],
+        description: {
+            es: 'Ahorcado Siglo XXXI pone al jugador como abogado de un amigo condenado a morir en ácido. Hay que acertar la letra y la posición antes de que el ácido llene la cápsula.',
+            en: 'Ahorcado Siglo XXXI casts the player as the lawyer of a friend sentenced to die in acid. The letter and the position have to land before the acid fills the capsule.'
+        },
+        features: {
+            es: [
+                'La portada tiene dos botones: Contra máquina y Contra persona. Empezar sortea una palabra de una lista de 25.',
+                'El jugador escribe una posición y pulsa una letra. Hay 27 letras, de la A a la Z más la Ñ.',
+                'Si la letra coincide en esa posición, se rellenan todas sus apariciones. Si está en la palabra y la posición no, el ácido no crece. Si no está, el ácido avanza.',
+                'La victoria compara la solución pegada con la palabra en mayúsculas.'
+            ],
+            en: [
+                'The cover has two buttons: against the machine and against a person. Start draws a word from a list of 25.',
+                'The player types a position and presses a letter. There are 27 letters, A to Z plus Ñ.',
+                'If the letter matches that position, every occurrence is filled. If it is in the word and the position is not, the acid does not rise. If it is absent, the acid advances.',
+                'Victory compares the joined solution with the word in capitals.'
+            ]
+        },
+        timeline: {
+            es: [
+                '17 de abril de 2025. El repo nace con Create Next App.',
+                '26 de abril de 2025. Portada y las dos partidas.'
+            ],
+            en: [
+                '17 April 2025. The repo starts with Create Next App.',
+                '26 April 2025. Cover and both games.'
+            ]
+        },
+        links: [
+            { kind: 'repo', href: 'https://github.com/Jsgallardo82/ahorcadosigloxxxi' },
+            { kind: 'deploy', href: 'https://ahorcadosigloxxxi.vercel.app/' }
+        ]
     }
 };

@@ -233,55 +233,152 @@ function currentDetailLang() {
     return document.documentElement.lang === 'en' ? 'en' : 'es';
 }
 
+function detailLabel(lang, key) {
+    return translations[lang] && translations[lang][key];
+}
+
+let detailSlide = 0;
+
 function fillProjectDetail(id) {
     const data = projectDetails[id];
     const dialog = document.getElementById('project-detail');
     if (!data || !dialog) return;
     const lang = currentDetailLang();
+    const sameProject = dialog.dataset.current === id;
+    const body = dialog.querySelector('.project-dialog-body');
+    const keptScroll = sameProject ? body.scrollTop : 0;
+    if (!sameProject) detailSlide = 0;
     dialog.dataset.current = id;
     dialog.querySelector('.project-dialog-kicker').textContent = data.kicker;
     dialog.querySelector('#project-detail-title').textContent = data.title[lang];
     const copy = dialog.querySelector('.project-dialog-copy');
     copy.replaceChildren();
-    (data.paragraphs[lang] || []).forEach(text => {
-        const paragraph = document.createElement('p');
-        paragraph.textContent = text;
-        copy.appendChild(paragraph);
+
+    const authors = document.createElement('p');
+    authors.className = 'project-authors';
+    const authorsLabel = document.createElement('span');
+    authorsLabel.className = 'project-authors-label';
+    authorsLabel.textContent = (detailLabel(lang, 'projects.detail.authors') || 'Autores') + ' ';
+    authors.appendChild(authorsLabel);
+    (data.authors || []).forEach((person, index) => {
+        if (index > 0) authors.appendChild(document.createTextNode(' · '));
+        const node = person.url ? document.createElement('a') : document.createElement('span');
+        node.className = 'project-author';
+        node.textContent = person.name;
+        if (person.url) {
+            node.href = person.url;
+            node.target = '_blank';
+            node.rel = 'noopener noreferrer';
+        }
+        authors.appendChild(node);
     });
+    copy.appendChild(authors);
+
+    const images = data.images || [];
+    if (images.length) {
+        const slide = images[Math.min(detailSlide, images.length - 1)];
+        const carousel = document.createElement('div');
+        carousel.className = 'project-carousel';
+        const figure = document.createElement('figure');
+        const image = document.createElement('img');
+        image.src = slide.src;
+        image.alt = slide.alt[lang];
+        image.width = 1200;
+        image.height = 675;
+        figure.appendChild(image);
+        if (slide.caption) {
+            const caption = document.createElement('figcaption');
+            caption.textContent = slide.caption[lang];
+            figure.appendChild(caption);
+        }
+        carousel.appendChild(figure);
+        if (images.length > 1) {
+            const nav = document.createElement('div');
+            nav.className = 'project-carousel-nav';
+            const previous = document.createElement('button');
+            previous.type = 'button';
+            previous.textContent = detailLabel(lang, 'projects.detail.prev') || 'Anterior';
+            previous.addEventListener('click', () => {
+                detailSlide = (detailSlide - 1 + images.length) % images.length;
+                fillProjectDetail(id);
+            });
+            const count = document.createElement('span');
+            count.className = 'project-carousel-count';
+            count.textContent = (detailSlide + 1) + ' / ' + images.length;
+            const next = document.createElement('button');
+            next.type = 'button';
+            next.textContent = detailLabel(lang, 'projects.detail.next') || 'Siguiente';
+            next.addEventListener('click', () => {
+                detailSlide = (detailSlide + 1) % images.length;
+                fillProjectDetail(id);
+            });
+            nav.append(previous, count, next);
+            carousel.appendChild(nav);
+        }
+        copy.appendChild(carousel);
+    }
+
+    const description = document.createElement('p');
+    description.textContent = data.description[lang];
+    copy.appendChild(description);
+
+    const features = data.features && data.features[lang];
+    if (features && features.length) {
+        const heading = document.createElement('h3');
+        heading.className = 'project-dialog-section';
+        heading.textContent = detailLabel(lang, 'projects.detail.features') || 'Funcionalidades';
+        copy.appendChild(heading);
+        const list = document.createElement('ul');
+        list.className = 'project-features';
+        features.forEach(item => {
+            const line = document.createElement('li');
+            line.textContent = item;
+            list.appendChild(line);
+        });
+        copy.appendChild(list);
+    }
+
     const timeline = data.timeline && data.timeline[lang];
-    if (!timeline || !timeline.length) return;
-    const heading = document.createElement('h3');
-    heading.className = 'project-dialog-timeline-title';
-    const label = translations[lang] && translations[lang]['projects.detail.timeline'];
-    heading.textContent = label || (lang === 'en' ? 'Timeline' : 'Línea de tiempo');
-    copy.appendChild(heading);
-    const list = document.createElement('ol');
-    list.className = 'project-timeline';
-    timeline.forEach(item => {
-        const line = document.createElement('li');
-        line.textContent = item;
-        list.appendChild(line);
-    });
-    copy.appendChild(list);
+    if (timeline && timeline.length) {
+        const heading = document.createElement('h3');
+        heading.className = 'project-dialog-section';
+        heading.textContent = detailLabel(lang, 'projects.detail.timeline') || 'Línea de tiempo';
+        copy.appendChild(heading);
+        const list = document.createElement('ol');
+        list.className = 'project-timeline';
+        timeline.forEach(item => {
+            const line = document.createElement('li');
+            line.textContent = item;
+            list.appendChild(line);
+        });
+        copy.appendChild(list);
+    }
+
+    if (data.links && data.links.length) {
+        const row = document.createElement('div');
+        row.className = 'project-detail-links';
+        data.links.forEach(link => {
+            const anchor = document.createElement('a');
+            anchor.href = link.href;
+            anchor.target = '_blank';
+            anchor.rel = 'noopener noreferrer';
+            anchor.className = link.kind === 'deploy' ? 'btn-outline2' : 'btn btn-outline';
+            const icon = document.createElement('i');
+            icon.className = link.kind === 'deploy' ? 'fas fa-external-link-alt' : 'fab fa-github';
+            const label = document.createElement('span');
+            const key = link.kind === 'deploy' ? 'projects.deployment' : 'projects.repository';
+            label.textContent = detailLabel(lang, key) || link.kind;
+            anchor.append(icon, document.createTextNode(' '), label);
+            row.appendChild(anchor);
+        });
+        copy.appendChild(row);
+    }
+    body.scrollTop = keptScroll;
 }
 
 document.querySelectorAll('.project-card[data-detail]').forEach(card => {
-    const content = card.querySelector('.project-content');
-    if (content && !content.querySelector('.project-open')) {
-        const cue = document.createElement('p');
-        cue.className = 'project-open';
-        cue.dataset.i18n = 'projects.detail.open';
-        cue.textContent = 'Ver ficha';
-        content.appendChild(cue);
-    }
-
     const openDetail = () => {
         const id = card.dataset.detail;
-        const named = document.getElementById('detail-' + id);
-        if (named) {
-            if (!named.open) named.showModal();
-            return;
-        }
         fillProjectDetail(id);
         const dialog = document.getElementById('project-detail');
         if (dialog && !dialog.open) dialog.showModal();

@@ -374,13 +374,6 @@ button.signal.active span {
     cursor: pointer;
 }
 
-.project-open {
-    margin-top: 1.25rem;
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--text-color);
-}
-
 .project-dialog[open] {
     display: flex;
     flex-direction: column;
@@ -463,6 +456,83 @@ button.signal.active span {
     margin-top: 0.45rem;
     font-size: 0.85rem;
     line-height: 1.4;
+}
+
+.project-dialog-section {
+    margin: 0.25rem 0 0.6rem;
+    font-size: 1.05rem;
+    text-align: left;
+    color: var(--text-color);
+}
+
+.project-authors {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.35rem 0.5rem;
+    margin: 0 0 1rem;
+    line-height: 1.5;
+}
+
+.project-authors-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.project-author {
+    color: var(--text-color);
+    font-weight: 650;
+}
+
+a.project-author {
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+}
+
+.project-carousel {
+    margin: 0 0 1.25rem;
+}
+
+.project-carousel-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-top: 0.55rem;
+}
+
+.project-carousel-nav button {
+    border: 2px solid var(--border-color);
+    border-radius: 999px;
+    background: var(--background);
+    color: var(--text-color);
+    font: inherit;
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 0.3rem 0.75rem;
+    cursor: pointer;
+}
+
+.project-carousel-count {
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.project-features {
+    margin: 0 0 1rem;
+    padding-left: 1.2rem;
+}
+
+.project-features li {
+    margin: 0.35rem 0;
+    line-height: 1.5;
+}
+
+.project-detail-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 0.25rem;
 }
 
 .project-dialog-timeline-title {
