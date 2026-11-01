@@ -38,6 +38,9 @@ const translations = {
         'projects.deployment': 'Despliegue',
         'projects.filter.deployed': 'Desplegado',
         'projects.filter.public': 'Repo público',
+        'projects.detail.open': 'Ver ficha',
+        'projects.detail.close': 'Cerrar',
+        'projects.detail.timeline': 'Línea de tiempo',
 
         'fitnessgym.description': 'Proyecto final del máster en Big Data para un gimnasio familiar. Limpié y ordené 86.093 asistencias de 2021 a 2026, entrené un modelo de deserción con scikit-learn y dejé la lista de riesgo a la vista del administrador en Total-App.',
         'fitnessgym.detail.open': 'Ver ficha',
@@ -60,6 +63,9 @@ const translations = {
         'lissajous.description': 'Visualizador de curvas de Lissajous. Se mueven las frecuencias, el desfase y las amplitudes, hay figuras listas y la imagen se puede guardar en PNG. Se abre directo en el navegador.',
         'modular.description': 'Visualizador de la circunferencia de multiplicación modular. Pone puntos sobre un círculo y los une según el producto modular: salen cardioides, nefroides y mandalas. El multiplicador se puede animar y la figura se exporta a PNG.',
         'bauly.description': 'Bauly fue finalista de la hackathon de 2025. Es una aplicación para coleccionistas: con una foto, la IA completa la ficha de la pieza. También se puede organizar la colección y compartirla con otras personas.',
+        'techcaribe.description': 'Agenda del Tech Caribe Fest. Pasé el cronograma a JSON, ordené cada lista por hora de inicio y dejé el filtro por salón. La zona developer muestra seis salones y 20 actividades.',
+        'juancho.description': 'Sitio de la campaña de Juancho Restrepo. Desde la sesión se administran la galería, los blogs y las noticias, con las fotos en Supabase Storage.',
+        'tecnocons.description': 'Backend del chat de una inmobiliaria. El agente busca proyectos, manda fotos y brochure, y va actualizando el lead en Supabase mientras la conversación sigue.',
         
         //stockup
         'stockup.title': 'Stockup',
@@ -143,6 +149,9 @@ const translations = {
         'projects.deployment': 'Deployment',
         'projects.filter.deployed': 'Deployed',
         'projects.filter.public': 'Public repo',
+        'projects.detail.open': 'Read the case',
+        'projects.detail.close': 'Close',
+        'projects.detail.timeline': 'Timeline',
 
         'fitnessgym.description': 'Final project of my Big Data master\'s degree for a family gym. I cleaned and organized 86,093 attendance records from 2021 to 2026, trained a churn model with scikit-learn, and put the risk list in front of the manager inside Total-App.',
         'fitnessgym.detail.open': 'Read the case',
@@ -165,6 +174,9 @@ const translations = {
         'lissajous.description': 'A Lissajous curve visualizer. You change the frequencies, phase, and amplitudes, pick ready-made figures, and save the image as a PNG. It opens straight in the browser.',
         'modular.description': 'A modular multiplication circle visualizer. It places points on a circle and joins them by modular product, drawing cardioids, nephroids, and mandalas. The multiplier can be animated and the figure exported as a PNG.',
         'bauly.description': 'Bauly was a finalist in the 2025 hackathon. It is an app for collectors: from one photo, AI fills in the item card. Collections can also be organized and shared with other people.',
+        'techcaribe.description': 'Agenda for Tech Caribe Fest. I moved the schedule into JSON, sorted each list by start time, and added a filter by room. The developer zone shows six rooms and 20 activities.',
+        'juancho.description': 'Campaign site for Juancho Restrepo. Once signed in, the gallery, blogs and news are managed from the site, with photos in Supabase Storage.',
+        'tecnocons.description': 'Chat backend for a real-estate company. The agent looks up projects, sends photos and a brochure, and keeps the lead updated in Supabase while the conversation continues.',
 
         //stockup
         'stockup.title': 'Stockup',

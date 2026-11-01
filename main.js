@@ -229,9 +229,61 @@ availabilityButtons.forEach(button => {
     });
 });
 
+function currentDetailLang() {
+    return document.documentElement.lang === 'en' ? 'en' : 'es';
+}
+
+function fillProjectDetail(id) {
+    const data = projectDetails[id];
+    const dialog = document.getElementById('project-detail');
+    if (!data || !dialog) return;
+    const lang = currentDetailLang();
+    dialog.dataset.current = id;
+    dialog.querySelector('.project-dialog-kicker').textContent = data.kicker;
+    dialog.querySelector('#project-detail-title').textContent = data.title[lang];
+    const copy = dialog.querySelector('.project-dialog-copy');
+    copy.replaceChildren();
+    (data.paragraphs[lang] || []).forEach(text => {
+        const paragraph = document.createElement('p');
+        paragraph.textContent = text;
+        copy.appendChild(paragraph);
+    });
+    const timeline = data.timeline && data.timeline[lang];
+    if (!timeline || !timeline.length) return;
+    const heading = document.createElement('h3');
+    heading.className = 'project-dialog-timeline-title';
+    const label = translations[lang] && translations[lang]['projects.detail.timeline'];
+    heading.textContent = label || (lang === 'en' ? 'Timeline' : 'Línea de tiempo');
+    copy.appendChild(heading);
+    const list = document.createElement('ol');
+    list.className = 'project-timeline';
+    timeline.forEach(item => {
+        const line = document.createElement('li');
+        line.textContent = item;
+        list.appendChild(line);
+    });
+    copy.appendChild(list);
+}
+
 document.querySelectorAll('.project-card[data-detail]').forEach(card => {
+    const content = card.querySelector('.project-content');
+    if (content && !content.querySelector('.project-open')) {
+        const cue = document.createElement('p');
+        cue.className = 'project-open';
+        cue.dataset.i18n = 'projects.detail.open';
+        cue.textContent = 'Ver ficha';
+        content.appendChild(cue);
+    }
+
     const openDetail = () => {
-        const dialog = document.getElementById('detail-' + card.dataset.detail);
+        const id = card.dataset.detail;
+        const named = document.getElementById('detail-' + id);
+        if (named) {
+            if (!named.open) named.showModal();
+            return;
+        }
+        fillProjectDetail(id);
+        const dialog = document.getElementById('project-detail');
         if (dialog && !dialog.open) dialog.showModal();
     };
 
@@ -246,6 +298,18 @@ document.querySelectorAll('.project-card[data-detail]').forEach(card => {
         event.preventDefault();
         openDetail();
     });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const originalSetLanguage = window.setLanguage;
+    if (typeof originalSetLanguage !== 'function') return;
+    window.setLanguage = function (lang) {
+        originalSetLanguage(lang);
+        const dialog = document.getElementById('project-detail');
+        if (dialog && dialog.open && dialog.dataset.current) {
+            fillProjectDetail(dialog.dataset.current);
+        }
+    };
 });
 
 document.querySelectorAll('.project-dialog').forEach(dialog => {

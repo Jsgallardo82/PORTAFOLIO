@@ -384,6 +384,7 @@ button.signal.active span {
 .project-dialog[open] {
     display: flex;
     flex-direction: column;
+    overflow: hidden;
     width: min(760px, calc(100vw - 2rem));
     max-height: min(88vh, 920px);
     margin: auto;
@@ -401,6 +402,8 @@ button.signal.active span {
 
 .project-dialog-body {
     overflow: auto;
+    min-height: 0;
+    flex: 1 1 auto;
     padding: 0.35rem 1.5rem 1.75rem;
 }
 
@@ -460,6 +463,23 @@ button.signal.active span {
     margin-top: 0.45rem;
     font-size: 0.85rem;
     line-height: 1.4;
+}
+
+.project-dialog-timeline-title {
+    margin: 0.25rem 0 0.6rem;
+    font-size: 1.05rem;
+    text-align: left;
+    color: var(--text-color);
+}
+
+.project-timeline {
+    margin: 0 0 1rem;
+    padding-left: 1.2rem;
+}
+
+.project-timeline li {
+    margin: 0.35rem 0;
+    line-height: 1.5;
 }
 
 @media (max-width: 768px) {
